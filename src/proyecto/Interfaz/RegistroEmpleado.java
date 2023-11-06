@@ -4,17 +4,32 @@
  */
 package proyecto.Interfaz;
 
+import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import proyecto.Empleado;
+
 /**
  *
  * @author Ariana
  */
 public class RegistroEmpleado extends javax.swing.JFrame {
 
+    boolean presionadoGenerar;
+    ArrayList<Empleado> empleados = new ArrayList<>();
+    Calendar fecha = Calendar.getInstance();
+
     /**
      * Creates new form RegistroEmpleado
      */
     public RegistroEmpleado() {
         initComponents();
+        fecha.set(2023, Calendar.NOVEMBER, 11);
+        jdFecha.setDate(fecha.getTime());
     }
 
     /**
@@ -26,25 +41,680 @@ public class RegistroEmpleado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel2 = new javax.swing.JPanel();
+        jpnNombre = new javax.swing.JPanel();
+        txtNombre = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jpnCedula = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        txtCedula = new javax.swing.JTextField();
+        jpnFecha = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jdFecha = new com.toedter.calendar.JDateChooser();
+        jpnDireccion = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        txtDireccion = new javax.swing.JTextField();
+        jpnTelefono = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        txtTelefono = new javax.swing.JTextField();
+        jpnCargo = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        txtCargo = new javax.swing.JTextField();
+        jpnSalario = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        txtSalario = new javax.swing.JTextField();
+        jpnSexo = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        cbSexo = new javax.swing.JComboBox<>();
+        jpnDatos = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtContrasena = new javax.swing.JTextField();
+        txtNumEmpleado = new javax.swing.JTextField();
+        btnGenerar = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        lbNumTelefono = new javax.swing.JLabel();
+        lbCedula = new javax.swing.JLabel();
+        lbNombre = new javax.swing.JLabel();
+        lbCargo = new javax.swing.JLabel();
+        lbFecha = new javax.swing.JLabel();
+        lbSexo = new javax.swing.JLabel();
+        lbSalario1 = new javax.swing.JLabel();
+        lbDireccion = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setMaximumSize(new java.awt.Dimension(1280, 853));
+        setMinimumSize(new java.awt.Dimension(1280, 853));
+        setPreferredSize(new java.awt.Dimension(1280, 853));
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jpnNombre.setBackground(new java.awt.Color(0, 51, 102));
+
+        txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNombre.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtNombre.setToolTipText("");
+        txtNombre.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombre", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtNombre.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        txtNombre.setHighlighter(null);
+        txtNombre.setName(""); // NOI18N
+        txtNombre.setOpaque(true);
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setBackground(new java.awt.Color(153, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuario.png"))); // NOI18N
+        jLabel3.setLabelFor(txtNombre);
+
+        javax.swing.GroupLayout jpnNombreLayout = new javax.swing.GroupLayout(jpnNombre);
+        jpnNombre.setLayout(jpnNombreLayout);
+        jpnNombreLayout.setHorizontalGroup(
+            jpnNombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnNombreLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jpnNombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnNombreLayout.createSequentialGroup()
+                    .addGap(0, 47, Short.MAX_VALUE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jpnNombreLayout.setVerticalGroup(
+            jpnNombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnNombreLayout.createSequentialGroup()
+                .addGap(0, 11, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jpnNombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jpnNombreLayout.createSequentialGroup()
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
+
+        txtNombre.getAccessibleContext().setAccessibleName("");
+
+        jpnCedula.setBackground(new java.awt.Color(0, 51, 102));
+
+        jLabel4.setBackground(new java.awt.Color(153, 0, 0));
+        jLabel4.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuario.png"))); // NOI18N
+        jLabel4.setLabelFor(txtNombre);
+
+        txtCedula.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtCedula.setToolTipText("");
+        txtCedula.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cédula", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCedulaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpnCedulaLayout = new javax.swing.GroupLayout(jpnCedula);
+        jpnCedula.setLayout(jpnCedulaLayout);
+        jpnCedulaLayout.setHorizontalGroup(
+            jpnCedulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnCedulaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCedula, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE))
+        );
+        jpnCedulaLayout.setVerticalGroup(
+            jpnCedulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnCedulaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(txtCedula)
+        );
+
+        jpnFecha.setBackground(new java.awt.Color(0, 51, 102));
+
+        jLabel5.setBackground(new java.awt.Color(153, 0, 0));
+        jLabel5.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuario.png"))); // NOI18N
+        jLabel5.setLabelFor(txtNombre);
+
+        jdFecha.setBackground(new java.awt.Color(255, 255, 255));
+        jdFecha.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha de nacimiento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        jdFecha.setDateFormatString("dd/MM/yyyy");
+        jdFecha.setRequestFocusEnabled(false);
+        jdFecha.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jdFechaPropertyChange(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpnFechaLayout = new javax.swing.GroupLayout(jpnFecha);
+        jpnFecha.setLayout(jpnFechaLayout);
+        jpnFechaLayout.setHorizontalGroup(
+            jpnFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnFechaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jdFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jpnFechaLayout.setVerticalGroup(
+            jpnFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnFechaLayout.createSequentialGroup()
+                .addGap(0, 11, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jdFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jpnDireccion.setBackground(new java.awt.Color(0, 51, 102));
+
+        jLabel6.setBackground(new java.awt.Color(153, 0, 0));
+        jLabel6.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuario.png"))); // NOI18N
+        jLabel6.setLabelFor(txtNombre);
+
+        txtDireccion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtDireccion.setToolTipText("");
+        txtDireccion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dirección", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtDireccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDireccionActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpnDireccionLayout = new javax.swing.GroupLayout(jpnDireccion);
+        jpnDireccion.setLayout(jpnDireccionLayout);
+        jpnDireccionLayout.setHorizontalGroup(
+            jpnDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnDireccionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE))
+        );
+        jpnDireccionLayout.setVerticalGroup(
+            jpnDireccionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnDireccionLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(txtDireccion)
+        );
+
+        jpnTelefono.setBackground(new java.awt.Color(0, 51, 102));
+
+        jLabel7.setBackground(new java.awt.Color(153, 0, 0));
+        jLabel7.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuario.png"))); // NOI18N
+        jLabel7.setLabelFor(txtNombre);
+
+        txtTelefono.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtTelefono.setToolTipText("");
+        txtTelefono.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Número de Teléfono", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpnTelefonoLayout = new javax.swing.GroupLayout(jpnTelefono);
+        jpnTelefono.setLayout(jpnTelefonoLayout);
+        jpnTelefonoLayout.setHorizontalGroup(
+            jpnTelefonoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnTelefonoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE))
+        );
+        jpnTelefonoLayout.setVerticalGroup(
+            jpnTelefonoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnTelefonoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(txtTelefono)
+        );
+
+        jpnCargo.setBackground(new java.awt.Color(0, 51, 102));
+
+        jLabel8.setBackground(new java.awt.Color(153, 0, 0));
+        jLabel8.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuario.png"))); // NOI18N
+        jLabel8.setLabelFor(txtNombre);
+
+        txtCargo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtCargo.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtCargo.setToolTipText("");
+        txtCargo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cargo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCargoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpnCargoLayout = new javax.swing.GroupLayout(jpnCargo);
+        jpnCargo.setLayout(jpnCargoLayout);
+        jpnCargoLayout.setHorizontalGroup(
+            jpnCargoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnCargoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCargo, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE))
+        );
+        jpnCargoLayout.setVerticalGroup(
+            jpnCargoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnCargoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(txtCargo)
+        );
+
+        jpnSalario.setBackground(new java.awt.Color(0, 51, 102));
+
+        jLabel9.setBackground(new java.awt.Color(153, 0, 0));
+        jLabel9.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuario.png"))); // NOI18N
+        jLabel9.setLabelFor(txtNombre);
+
+        txtSalario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtSalario.setToolTipText("");
+        txtSalario.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Salario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtSalario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSalarioActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpnSalarioLayout = new javax.swing.GroupLayout(jpnSalario);
+        jpnSalario.setLayout(jpnSalarioLayout);
+        jpnSalarioLayout.setHorizontalGroup(
+            jpnSalarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnSalarioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtSalario, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE))
+        );
+        jpnSalarioLayout.setVerticalGroup(
+            jpnSalarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnSalarioLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(txtSalario)
+        );
+
+        jpnSexo.setBackground(new java.awt.Color(0, 51, 102));
+
+        jLabel10.setBackground(new java.awt.Color(153, 0, 0));
+        jLabel10.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/usuario.png"))); // NOI18N
+        jLabel10.setLabelFor(txtNombre);
+
+        cbSexo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige el sexo", "Hombre", "Mujer" }));
+        cbSexo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sexo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        cbSexo.setPreferredSize(new java.awt.Dimension(179, 31));
+
+        javax.swing.GroupLayout jpnSexoLayout = new javax.swing.GroupLayout(jpnSexo);
+        jpnSexo.setLayout(jpnSexoLayout);
+        jpnSexoLayout.setHorizontalGroup(
+            jpnSexoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnSexoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbSexo, 0, 335, Short.MAX_VALUE))
+        );
+        jpnSexoLayout.setVerticalGroup(
+            jpnSexoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnSexoLayout.createSequentialGroup()
+                .addGap(0, 15, Short.MAX_VALUE)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(cbSexo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jpnDatos.setBackground(new java.awt.Color(255, 255, 255));
+        jpnDatos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos de Usuario", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(0, 51, 102))); // NOI18N
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel11.setText("Número de Empleado");
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel12.setText("Contraseña");
+
+        txtContrasena.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtContrasena.setEnabled(false);
+        txtContrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContrasenaActionPerformed(evt);
+            }
+        });
+
+        txtNumEmpleado.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtNumEmpleado.setEnabled(false);
+
+        btnGenerar.setBackground(new java.awt.Color(0, 51, 102));
+        btnGenerar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnGenerar.setForeground(new java.awt.Color(255, 255, 255));
+        btnGenerar.setText("Generar Datos");
+        btnGenerar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGenerarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpnDatosLayout = new javax.swing.GroupLayout(jpnDatos);
+        jpnDatos.setLayout(jpnDatosLayout);
+        jpnDatosLayout.setHorizontalGroup(
+            jpnDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnDatosLayout.createSequentialGroup()
+                .addContainerGap(80, Short.MAX_VALUE)
+                .addGroup(jpnDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(70, 70, 70)
+                .addGroup(jpnDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNumEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnGenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
+        );
+        jpnDatosLayout.setVerticalGroup(
+            jpnDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnDatosLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jpnDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtNumEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGroup(jpnDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
+            .addGroup(jpnDatosLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(btnGenerar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        btnRegistrar.setBackground(new java.awt.Color(0, 153, 51));
+        btnRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrar.setText("Registrar Usuario");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar.setBackground(new java.awt.Color(153, 0, 51));
+        btnLimpiar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel2.setText("Registro de Empleados");
+
+        lbNumTelefono.setForeground(new java.awt.Color(255, 255, 255));
+        lbNumTelefono.setText("Se debe completar este campo.");
+
+        lbCedula.setForeground(new java.awt.Color(255, 255, 255));
+        lbCedula.setText("Se debe completar este campo.");
+
+        lbNombre.setForeground(new java.awt.Color(255, 255, 255));
+        lbNombre.setText("Se debe completar este campo.");
+
+        lbCargo.setForeground(new java.awt.Color(255, 255, 255));
+        lbCargo.setText("Se debe completar este campo.");
+
+        lbFecha.setForeground(new java.awt.Color(255, 255, 255));
+        lbFecha.setText("Se debe completar este campo.");
+
+        lbSexo.setForeground(new java.awt.Color(255, 255, 255));
+        lbSexo.setText("Se debe completar este campo.");
+
+        lbSalario1.setForeground(new java.awt.Color(255, 255, 255));
+        lbSalario1.setText("Se debe completar este campo.");
+
+        lbDireccion.setForeground(new java.awt.Color(255, 255, 255));
+        lbDireccion.setText("Se debe completar este campo.");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(142, 142, 142)
+                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(204, 204, 204))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(0, 50, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jpnDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(15, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jpnCedula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jpnFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jpnDireccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jpnNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lbCedula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lbFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(lbSalario1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jpnCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jpnSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jpnSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(lbNumTelefono, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jpnTelefono, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(lbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(lbCargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel2)
+                .addGap(44, 44, 44)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jpnTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jpnNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbNumTelefono)
+                    .addComponent(lbNombre))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jpnCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbCedula)
+                            .addComponent(lbCargo))
+                        .addGap(28, 28, 28)
+                        .addComponent(jpnFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jpnCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(jpnSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbFecha)
+                    .addComponent(lbSalario1))
+                .addGap(22, 22, 22)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jpnSexo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpnDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbSexo)
+                    .addComponent(lbDireccion))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jpnDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(86, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 840, 870));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MicrosoftTeams-image (5).png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 450, 870));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        if (txtNombre.isCursorSet()) {
+            txtNombre.setText(null);
+        }
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCedulaActionPerformed
+
+    private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDireccionActionPerformed
+
+    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefonoActionPerformed
+
+    private void txtCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCargoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCargoActionPerformed
+
+    private void txtSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSalarioActionPerformed
+
+    private void txtContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContrasenaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContrasenaActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        SimpleDateFormat ff = new SimpleDateFormat("dd/MM/yyyy");
+        Date fecha = jdFecha.getDate();
+        try {
+            if ((txtCargo.getText().isEmpty() || txtCedula.getText().isEmpty() || jdFecha.getDate().getTime() == fecha.getTime()|| txtNombre.getText().isEmpty()
+                    || txtTelefono.getText().isEmpty() || txtDireccion.getText().isEmpty() || txtSalario.getText().isEmpty())) {
+                if (txtCargo.getText().isEmpty()) {
+                    lbCargo.setForeground(Color.red);
+                } else {
+                    lbCargo.setForeground(Color.white);
+                }
+                if (txtNombre.getText().isEmpty()) {
+                    lbNombre.setForeground(Color.red);
+                } else {
+                    lbNombre.setForeground(Color.white);
+                }
+                
+                if (txtDireccion.getText().isEmpty()) {
+                    lbDireccion.setForeground(Color.red);
+                } else {
+                    lbDireccion.setForeground(Color.white);
+                }
+                if (txtCedula.getText().isEmpty()) {
+                    lbCedula.setForeground(Color.red);
+                } else {
+                    lbCedula.setForeground(Color.white);
+                }
+                if (txtSalario.getText().isEmpty()) {
+                    lbSalario1.setForeground(Color.red);
+                } else {
+                    lbSalario1.setForeground(Color.white);
+                }
+                if (txtTelefono.getText().isEmpty()) {
+                    lbNumTelefono.setForeground(Color.red);
+                } else {
+                    lbNumTelefono.setForeground(Color.white);
+                }
+                if ("11/11/2023".equals(ff.format(jdFecha.getDate().getTime()))) {
+                     lbFecha.setForeground(Color.red);
+                } else {
+                    lbFecha.setForeground(Color.white);
+                }
+                throw new Exception("Se deben completar todos los campos.");
+            } else if (presionadoGenerar == false) {
+                throw new Exception("Se debe generar el número de empleado y contraseña antes de continuar.");
+            } else {
+                Empleado empleado = new Empleado(txtNombre.getText(), ff.format(jdFecha.getDate().getTime()), txtCedula.getText(), txtDireccion.getText(), txtTelefono.getText(), cbSexo.toString(), txtCargo.getText(), txtSalario.getText(),
+                        txtNumEmpleado.getText(), txtContrasena.getText());
+                empleados.add(empleado);
+                JOptionPane.showMessageDialog(null, empleados.toString());
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
+
+        try {
+            if (txtCedula.getText().isEmpty() == true) {
+                presionadoGenerar = false;
+                throw new Exception("Los datos no pueden ser generados. \nFavor ingresar el número de cédula.");
+            } else {
+                presionadoGenerar = true;
+                txtNumEmpleado.setText("11" + txtCedula.getText());
+                txtContrasena.setText("LA" + txtCedula.getText());
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+
+
+    }//GEN-LAST:event_btnGenerarActionPerformed
+
+    private void jdFechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdFechaPropertyChange
+
+       
+    }//GEN-LAST:event_jdFechaPropertyChange
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -78,5 +748,48 @@ public class RegistroEmpleado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGenerar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnRegistrar;
+    private javax.swing.JComboBox<String> cbSexo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel2;
+    private com.toedter.calendar.JDateChooser jdFecha;
+    private javax.swing.JPanel jpnCargo;
+    private javax.swing.JPanel jpnCedula;
+    private javax.swing.JPanel jpnDatos;
+    private javax.swing.JPanel jpnDireccion;
+    private javax.swing.JPanel jpnFecha;
+    private javax.swing.JPanel jpnNombre;
+    private javax.swing.JPanel jpnSalario;
+    private javax.swing.JPanel jpnSexo;
+    private javax.swing.JPanel jpnTelefono;
+    private javax.swing.JLabel lbCargo;
+    private javax.swing.JLabel lbCedula;
+    private javax.swing.JLabel lbDireccion;
+    private javax.swing.JLabel lbFecha;
+    private javax.swing.JLabel lbNombre;
+    private javax.swing.JLabel lbNumTelefono;
+    private javax.swing.JLabel lbSalario1;
+    private javax.swing.JLabel lbSexo;
+    private javax.swing.JTextField txtCargo;
+    private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtContrasena;
+    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNumEmpleado;
+    private javax.swing.JTextField txtSalario;
+    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }
