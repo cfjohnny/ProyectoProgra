@@ -634,8 +634,8 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         SimpleDateFormat ff = new SimpleDateFormat("dd/MM/yyyy");
         Date fecha = jdFecha.getDate();
         try {
-            if ((txtCargo.getText().isEmpty() || txtCedula.getText().isEmpty() || jdFecha.getDate().getTime() == fecha.getTime()|| txtNombre.getText().isEmpty()
-                    || txtTelefono.getText().isEmpty() || txtDireccion.getText().isEmpty() || txtSalario.getText().isEmpty())) {
+            if ((txtCargo.getText().isEmpty() || txtCedula.getText().isEmpty() || "11/11/2023".equals(ff.format(jdFecha.getDate().getTime())) || txtNombre.getText().isEmpty()
+                    || txtTelefono.getText().isEmpty() || txtDireccion.getText().isEmpty() || txtSalario.getText().isEmpty()) || cbSexo.getSelectedIndex() == 0) {
                 if (txtCargo.getText().isEmpty()) {
                     lbCargo.setForeground(Color.red);
                 } else {
@@ -646,7 +646,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
                 } else {
                     lbNombre.setForeground(Color.white);
                 }
-                
+
                 if (txtDireccion.getText().isEmpty()) {
                     lbDireccion.setForeground(Color.red);
                 } else {
@@ -668,18 +668,29 @@ public class RegistroEmpleado extends javax.swing.JFrame {
                     lbNumTelefono.setForeground(Color.white);
                 }
                 if ("11/11/2023".equals(ff.format(jdFecha.getDate().getTime()))) {
-                     lbFecha.setForeground(Color.red);
+                    lbFecha.setForeground(Color.red);
                 } else {
                     lbFecha.setForeground(Color.white);
                 }
+                lbFecha.setForeground(Color.white);
                 throw new Exception("Se deben completar todos los campos.");
             } else if (presionadoGenerar == false) {
                 throw new Exception("Se debe generar el número de empleado y contraseña antes de continuar.");
             } else {
-                Empleado empleado = new Empleado(txtNombre.getText(), ff.format(jdFecha.getDate().getTime()), txtCedula.getText(), txtDireccion.getText(), txtTelefono.getText(), cbSexo.toString(), txtCargo.getText(), txtSalario.getText(),
+                Empleado empleado = new Empleado(txtNombre.getText(), ff.format(jdFecha.getDate().getTime()), txtCedula.getText(), txtDireccion.getText(), txtTelefono.getText(), cbSexo.getSelectedItem().toString(), txtCargo.getText(), txtSalario.getText(),
                         txtNumEmpleado.getText(), txtContrasena.getText());
                 empleados.add(empleado);
                 JOptionPane.showMessageDialog(null, empleados.toString());
+                txtCargo.setText("");
+                txtCedula.setText("");
+                txtNombre.setText("");
+                txtNumEmpleado.setText("");
+                txtSalario.setText("");
+                txtTelefono.setText("");
+                txtContrasena.setText("");
+                jdFecha.setDateFormatString("11/11/2023");
+                lbFecha.setForeground(Color.white);
+                txtDireccion.setText("");
             }
 
         } catch (Exception e) {
@@ -689,7 +700,15 @@ public class RegistroEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-
+        txtCargo.setText("");
+        txtCedula.setText("");
+        txtNombre.setText("");
+        txtNumEmpleado.setText("");
+        txtSalario.setText("");
+        txtTelefono.setText("");
+        txtContrasena.setText("");
+        jdFecha.setDate(fecha.getTime());
+        txtDireccion.setText("");
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
@@ -712,7 +731,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
 
     private void jdFechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdFechaPropertyChange
 
-       
+
     }//GEN-LAST:event_jdFechaPropertyChange
 
     public static void main(String args[]) {

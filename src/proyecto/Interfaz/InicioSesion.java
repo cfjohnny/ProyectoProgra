@@ -71,6 +71,7 @@ public class InicioSesion extends javax.swing.JFrame {
         btnRegistro.setForeground(new java.awt.Color(0, 51, 102));
         btnRegistro.setText("Registrar empleado");
         btnRegistro.setBorder(null);
+        btnRegistro.setBorderPainted(false);
         btnRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistroActionPerformed(evt);
@@ -127,7 +128,6 @@ public class InicioSesion extends javax.swing.JFrame {
         jLabel2.setToolTipText("");
         jLabel2.setFocusable(false);
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        jLabel2.setPreferredSize(new java.awt.Dimension(1280, 853));
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
