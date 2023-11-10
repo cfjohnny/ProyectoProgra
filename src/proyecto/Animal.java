@@ -21,8 +21,9 @@ public class Animal {
     private String historia;
     private String tipoAlimentacion;
     private String apadrinado;
-    private ArrayList<Padrino> padrinos = new ArrayList<>();
-
+    private Padrino padrino;
+    private int idAnimal;
+    
     public Animal() {
         this.nombre = "";
         this.fechaNacimiento = "";
@@ -33,9 +34,11 @@ public class Animal {
         this.historia = "";
         this.tipoAlimentacion = "";
         this.apadrinado = "Disponible";
+        this.padrino = new Padrino();//consultarle a la profe
+        this.idAnimal = 0;
     }
 
-    public Animal(String nombre, String fechaNacimiento, String especie, String estadoSalud, double peso, String genero, String historia, String tipoAlimentacion, String apadrinado) {
+    public Animal(String nombre, String fechaNacimiento, String especie, String estadoSalud, double peso, String genero, String historia, String tipoAlimentacion, String apadrinado, Padrino padrino, int idAnimal) {
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.especie = especie;
@@ -45,7 +48,26 @@ public class Animal {
         this.historia = historia;
         this.tipoAlimentacion = tipoAlimentacion;
         this.apadrinado = apadrinado;
+        this.padrino = padrino;
+        this.idAnimal = idAnimal;
     }
+
+    public Padrino getPadrino() {
+        return padrino;
+    }
+
+    public void setPadrino(Padrino padrino) {
+        this.padrino = padrino;
+    }
+
+    public int getIdAnimal() {
+        return idAnimal;
+    }
+
+    public void setIdAnimal(int idAnimal) {
+        this.idAnimal = idAnimal;
+    }
+
 
     public String getApadrinado() {
         return apadrinado;
@@ -119,18 +141,11 @@ public class Animal {
         this.historia = historia;
     }
 
-    public ArrayList<Padrino> getPadrinos() {
-        return padrinos;
-    }
-
-    public void setPadrinos(ArrayList<Padrino> padrinos) {
-        this.padrinos = padrinos;
-    }
-
     @Override
     public String toString() {
         return "Animal:"
                 + "\nNombre: " + this.getNombre()
+                + "\nID: " + this.getIdAnimal()
                 + "\nFecha de Nacimiento: " + this.getFechaNacimiento()
                 + "\nEspecie: " + this.getEspecie()
                 + "\nEstado de Salud: " + this.getEstadoSalud()
@@ -139,7 +154,7 @@ public class Animal {
                 + "\nHistoria: " + this.getHistoria()
                 + "\nTipo de Alimentación: " + this.getTipoAlimentacion()
                 + "\nEstado de apadrinamiento: " + this.getApadrinado()
-                + "\nPadrinos: " + this.getPadrinos();
+                + "\nPadrino: " + this.getPadrino();
     }
 
 }
