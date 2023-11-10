@@ -4,11 +4,14 @@
  */
 package proyecto;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Ariana
  */
 public class Animal {
+
     private String nombre;
     private String fechaNacimiento;
     private String especie;
@@ -17,6 +20,8 @@ public class Animal {
     private String genero;
     private String historia;
     private String tipoAlimentacion;
+    private String apadrinado;
+    private ArrayList<Padrino> padrinos = new ArrayList<>();
 
     public Animal() {
         this.nombre = "";
@@ -27,9 +32,10 @@ public class Animal {
         this.genero = "";
         this.historia = "";
         this.tipoAlimentacion = "";
+        this.apadrinado = "Disponible";
     }
 
-    public Animal(String nombre, String fechaNacimiento, String especie, String estadoSalud, double peso, String genero, String historia, String tipoAlimentacion) {
+    public Animal(String nombre, String fechaNacimiento, String especie, String estadoSalud, double peso, String genero, String historia, String tipoAlimentacion, String apadrinado) {
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.especie = especie;
@@ -38,6 +44,15 @@ public class Animal {
         this.genero = genero;
         this.historia = historia;
         this.tipoAlimentacion = tipoAlimentacion;
+        this.apadrinado = apadrinado;
+    }
+
+    public String getApadrinado() {
+        return apadrinado;
+    }
+
+    public void setApadrinado(String apadrinado) {
+        this.apadrinado = apadrinado;
     }
 
     public String getTipoAlimentacion() {
@@ -104,18 +119,27 @@ public class Animal {
         this.historia = historia;
     }
 
+    public ArrayList<Padrino> getPadrinos() {
+        return padrinos;
+    }
+
+    public void setPadrinos(ArrayList<Padrino> padrinos) {
+        this.padrinos = padrinos;
+    }
+
     @Override
     public String toString() {
-        return "Animal:"+ 
-                "\nNombre: " + this.getNombre() +
-                "\nFecha de Nacimiento: " + this.getFechaNacimiento() + 
-                "\nEspecie: " + this.getEspecie() + 
-                "\nEstado de Salud: " + this.getEstadoSalud()+ 
-                "\nPeso: " + this.getPeso() + 
-                "\nGénero: " + this.getGenero() + 
-                "\nHistoria: " + this.getHistoria() + 
-                "\nTipo de Alimentación: " + this.getTipoAlimentacion();
+        return "Animal:"
+                + "\nNombre: " + this.getNombre()
+                + "\nFecha de Nacimiento: " + this.getFechaNacimiento()
+                + "\nEspecie: " + this.getEspecie()
+                + "\nEstado de Salud: " + this.getEstadoSalud()
+                + "\nPeso: " + this.getPeso()
+                + "\nGénero: " + this.getGenero()
+                + "\nHistoria: " + this.getHistoria()
+                + "\nTipo de Alimentación: " + this.getTipoAlimentacion()
+                + "\nEstado de apadrinamiento: " + this.getApadrinado()
+                + "\nPadrinos: " + this.getPadrinos();
     }
-    
-    
+
 }

@@ -4,17 +4,19 @@
  */
 package proyecto.Interfaz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Ariana
  */
 public class InicioSesion extends javax.swing.JFrame {
 
-    /**
-     * Creates new form InicioSesion
-     */
+    RegistroEmpleado registro = new RegistroEmpleado();
+
     public InicioSesion() {
         initComponents();
+
     }
 
     /**
@@ -41,6 +43,7 @@ public class InicioSesion extends javax.swing.JFrame {
         setIconImage(getIconImage());
         setPreferredSize(new java.awt.Dimension(1280, 853));
         setResizable(false);
+        setSize(new java.awt.Dimension(1280, 853));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -134,13 +137,28 @@ public class InicioSesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        // TODO add your handling code here:
+        
+        if (registro.empleados.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Lo sentimos, no existe ningún empleado registrado");
+        } else {
+            for (int i = 0; i < 10; i++) {
+                if(txtUsuario.getText().equals(registro.empleados.get(i).getIdEmpleado())&&txtxContrasenna.getText().equals(registro.empleados.get(i).getContrasena())){
+                    MenuPrincipal menu = new MenuPrincipal();
+                    menu.setVisible(true);
+                    menu.setLocationRelativeTo(null);
+                } else {
+                    if(!txtUsuario.getText().equals(registro.empleados.get(i).getIdEmpleado()) || !txtxContrasenna.getText().equals(registro.empleados.get(i).getContrasena())){
+                        JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecto.");
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
-       RegistroEmpleado registro = new RegistroEmpleado();
-       registro.setVisible(true);
-       registro.setLocationRelativeTo(null);
+
+        registro.setVisible(true);
+        registro.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnRegistroActionPerformed
 
     /**

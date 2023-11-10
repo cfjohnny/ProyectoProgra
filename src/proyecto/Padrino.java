@@ -11,19 +11,23 @@ import java.util.ArrayList;
  * @author Ariana
  */
 public class Padrino extends Persona {
+
     private ArrayList<Animal> animalesApadrinados = new ArrayList<>();
     private String metodoPago;
     private int montoDonado;
+    private String ocupacion;
 
     public Padrino() {
         this.metodoPago = "";
         this.montoDonado = 0;
+        this.ocupacion = "";
     }
 
-    public Padrino(String nombre, String fechaNacimiento, String cedula, String ocupacion, String direccion, String numeroTelefono, String metodoPago, int montoDonado) {
-        super(nombre, fechaNacimiento, cedula, ocupacion, direccion, numeroTelefono);
+    public Padrino(String nombre, String fechaNacimiento, String cedula, String direccion, String numeroTelefono, String sexo, String metodoPago, int montoDonado, String ocupacion) {
+        super(nombre, fechaNacimiento, cedula, direccion, numeroTelefono, sexo);
         this.metodoPago = metodoPago;
         this.montoDonado = montoDonado;
+        this.ocupacion = ocupacion;
     }
 
     public int getMontoDonado() {
@@ -50,13 +54,21 @@ public class Padrino extends Persona {
         this.metodoPago = metodoPago;
     }
 
+    public String getOcupacion() {
+        return ocupacion;
+    }
+
+    public void setOcupacion(String ocupacion) {
+        this.ocupacion = ocupacion;
+    }
+
     @Override
     public String toString() {
-        return "Padrino:\n" + 
-                super.toString()+ 
-                "\nAnimales Apadrinados: " + this.getAnimalesApadrinados() + 
-                "\nMétodo de Pago: " + this.getMetodoPago() + 
-                "\nMonto Donado: " + this.getMontoDonado();
+        return "Padrino:\n"
+                + super.toString()
+                + "\nAnimales Apadrinados: " + this.getAnimalesApadrinados()
+                + "\nMétodo de Pago: " + this.getMetodoPago()
+                + "\nMonto Donado: " + this.getMontoDonado();
     }
-    
+
 }
