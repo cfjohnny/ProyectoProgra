@@ -30,6 +30,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         initComponents();
         fecha.set(2023, Calendar.NOVEMBER, 11);
         jdFecha.setDate(fecha.getTime());
+        setDefaultCloseOperation(RegistroEmpleado.HIDE_ON_CLOSE);
     }
 
     /**
@@ -91,7 +92,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1280, 853));
         setPreferredSize(new java.awt.Dimension(1280, 853));
         setResizable(false);
-        setSize(new java.awt.Dimension(1280, 853));
+        setSize(new java.awt.Dimension(1280, 1024));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -542,8 +543,8 @@ public class RegistroEmpleado extends javax.swing.JFrame {
                         .addGap(45, 45, 45)
                         .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(218, 218, 218)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(206, 206, 206)
+                        .addComponent(jLabel2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -630,102 +631,6 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContrasenaActionPerformed
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        SimpleDateFormat ff = new SimpleDateFormat("dd/MM/yyyy");
-        Date fecha = jdFecha.getDate();
-        try {
-            if ((txtCargo.getText().isEmpty() || txtCedula.getText().isEmpty() || "11/11/2023".equals(ff.format(jdFecha.getDate().getTime())) || txtNombre.getText().isEmpty()
-                    || txtTelefono.getText().isEmpty() || txtDireccion.getText().isEmpty() || txtSalario.getText().isEmpty()) || cbSexo.getSelectedIndex() == 0) {
-                if (txtCargo.getText().isEmpty()) {
-                    lbCargo.setForeground(Color.red);
-                } else {
-                    lbCargo.setForeground(Color.white);
-                }
-                if (txtNombre.getText().isEmpty()) {
-                    lbNombre.setForeground(Color.red);
-                } else {
-                    lbNombre.setForeground(Color.white);
-                }
-
-                if (txtDireccion.getText().isEmpty()) {
-                    lbDireccion.setForeground(Color.red);
-                } else {
-                    lbDireccion.setForeground(Color.white);
-                }
-                if (txtCedula.getText().isEmpty()) {
-                    lbCedula.setForeground(Color.red);
-                } else {
-                    lbCedula.setForeground(Color.white);
-                }
-                if (txtSalario.getText().isEmpty()) {
-                    lbSalario1.setForeground(Color.red);
-                } else {
-                    lbSalario1.setForeground(Color.white);
-                }
-                if (txtTelefono.getText().isEmpty()) {
-                    lbNumTelefono.setForeground(Color.red);
-                } else {
-                    lbNumTelefono.setForeground(Color.white);
-                }
-                if ("11/11/2023".equals(ff.format(jdFecha.getDate().getTime()))) {
-                    lbFecha.setForeground(Color.red);
-                } else {
-                    lbFecha.setForeground(Color.white);
-                }
-                lbFecha.setForeground(Color.white);
-                throw new Exception("Se deben completar todos los campos.");
-            } else if (presionadoGenerar == false) {
-                throw new Exception("Se debe generar el número de empleado y contraseña antes de continuar.");
-            } else {
-                Empleado empleado = new Empleado(txtNombre.getText(), ff.format(jdFecha.getDate().getTime()), txtCedula.getText(), txtDireccion.getText(), txtTelefono.getText(), cbSexo.getSelectedItem().toString(), txtCargo.getText(), txtSalario.getText(),
-                        txtNumEmpleado.getText(), txtContrasena.getText());
-                boolean existe = false;
-                if (!empleados.isEmpty()) {
-                    for (int i = 0; i < empleados.size(); i++) {
-                        if (empleado.getCedula().equals(empleados.get(i).getCedula())) {
-                            existe = true;
-                        }
-                    }
-                    if (existe = true) {
-                        JOptionPane.showMessageDialog(null, "El empleado ya ha sido registrado.");
-                    } else {
-                        existe=false;
-                        empleados.add(empleado);
-                        JOptionPane.showMessageDialog(null, empleados.toString());
-                        txtCargo.setText("");
-                        txtCedula.setText("");
-                        txtNombre.setText("");
-                        txtNumEmpleado.setText("");
-                        txtSalario.setText("");
-                        txtTelefono.setText("");
-                        txtContrasena.setText("");
-                        jdFecha.setDateFormatString("11/11/2023");
-                        lbFecha.setForeground(Color.white);
-                        txtDireccion.setText("");
-
-                    }
-                } else {
-                    empleados.add(empleado);
-                    JOptionPane.showMessageDialog(null, empleados.toString());
-                    txtCargo.setText("");
-                    txtCedula.setText("");
-                    txtNombre.setText("");
-                    txtNumEmpleado.setText("");
-                    txtSalario.setText("");
-                    txtTelefono.setText("");
-                    txtContrasena.setText("");
-                    jdFecha.setDateFormatString("11/11/2023");
-                    lbFecha.setForeground(Color.white);
-                    txtDireccion.setText("");
-                }
-
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-
-    }//GEN-LAST:event_btnRegistrarActionPerformed
-
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         txtCargo.setText("");
         txtCedula.setText("");
@@ -760,6 +665,108 @@ public class RegistroEmpleado extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jdFechaPropertyChange
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        SimpleDateFormat ff = new SimpleDateFormat("dd/MM/yyyy");
+        Date fecha = jdFecha.getDate();
+        try {
+            if ((txtCargo.getText().isEmpty() || txtCedula.getText().isEmpty() || "11/11/2023".equals(ff.format(jdFecha.getDate().getTime())) || txtNombre.getText().isEmpty()
+                || txtTelefono.getText().isEmpty() || txtDireccion.getText().isEmpty() || txtSalario.getText().isEmpty()) || cbSexo.getSelectedIndex() == 0) {
+            if (txtCargo.getText().isEmpty()) {
+                lbCargo.setForeground(Color.red);
+            } else {
+                lbCargo.setForeground(Color.white);
+            }
+            if (txtNombre.getText().isEmpty()) {
+                lbNombre.setForeground(Color.red);
+            } else {
+                lbNombre.setForeground(Color.white);
+            }
+
+            if (txtDireccion.getText().isEmpty()) {
+                lbDireccion.setForeground(Color.red);
+            } else {
+                lbDireccion.setForeground(Color.white);
+            }
+            if (txtCedula.getText().isEmpty()) {
+                lbCedula.setForeground(Color.red);
+            } else {
+                lbCedula.setForeground(Color.white);
+            }
+            if (txtSalario.getText().isEmpty()) {
+                lbSalario1.setForeground(Color.red);
+            } else {
+                lbSalario1.setForeground(Color.white);
+            }
+            if (txtTelefono.getText().isEmpty()) {
+                lbNumTelefono.setForeground(Color.red);
+            } else {
+                lbNumTelefono.setForeground(Color.white);
+            }
+            if ("11/11/2023".equals(ff.format(jdFecha.getDate().getTime()))) {
+                lbFecha.setForeground(Color.red);
+            } else {
+                lbFecha.setForeground(Color.white);
+            }
+            lbFecha.setForeground(Color.white);
+            throw new Exception("Se deben completar todos los campos.");
+        } else if (presionadoGenerar == false) {
+            throw new Exception("Se debe generar el número de empleado y contraseña antes de continuar.");
+        } else {
+            Empleado empleado = new Empleado(txtNombre.getText(), ff.format(jdFecha.getDate().getTime()), txtCedula.getText(), txtDireccion.getText(), txtTelefono.getText(), cbSexo.getSelectedItem().toString(), txtCargo.getText(), Double.parseDouble(txtSalario.getText()),
+                txtNumEmpleado.getText(), txtContrasena.getText());
+            boolean existe = false;
+            if (!empleados.isEmpty()) {
+                for (int i = 0; i < empleados.size(); i++) {
+                    if (empleado.getCedula().equals(empleados.get(i).getCedula())) {
+                        existe = true;  
+                    }
+                }
+                if (existe = true) {
+                    JOptionPane.showMessageDialog(null, "El empleado ya ha sido registrado.");
+                } else {
+                    existe=false;
+                    empleados.add(empleado);
+                    JOptionPane.showMessageDialog(null, empleados.toString());
+                    txtCargo.setText("");
+                    lbCargo.setForeground(Color.white);
+                    txtCedula.setText("");
+                    lbCedula.setForeground(Color.white);
+                    txtNombre.setText("");
+                    lbNombre.setForeground(Color.white);
+                    txtNumEmpleado.setText("");
+                    txtSalario.setText("");
+                    lbSalario1.setForeground(Color.white);
+                    txtTelefono.setText("");
+                    lbNumTelefono.setForeground(Color.white);
+                    txtContrasena.setText("");
+                    lbFecha.setForeground(Color.white);
+                    txtDireccion.setText("");
+                    lbDireccion.setForeground(Color.white);
+
+                }
+            } else {
+                empleados.add(empleado);
+                JOptionPane.showMessageDialog(null, empleados.toString());
+                txtCargo.setText("");
+                txtCedula.setText("");
+                txtNombre.setText("");
+                txtNumEmpleado.setText("");
+                txtSalario.setText("");
+                txtTelefono.setText("");
+                txtContrasena.setText("");
+                lbFecha.setForeground(Color.white);
+                txtDireccion.setText("");
+            }
+
+        }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "El campo salario solo permite datos númericos");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
