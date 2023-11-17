@@ -657,8 +657,6 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
-
-
     }//GEN-LAST:event_btnGenerarActionPerformed
 
     private void jdFechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdFechaPropertyChange
@@ -682,7 +680,6 @@ public class RegistroEmpleado extends javax.swing.JFrame {
             } else {
                 lbNombre.setForeground(Color.white);
             }
-
             if (txtDireccion.getText().isEmpty()) {
                 lbDireccion.setForeground(Color.red);
             } else {
@@ -713,7 +710,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         } else if (presionadoGenerar == false) {
             throw new Exception("Se debe generar el número de empleado y contraseña antes de continuar.");
         } else {
-            Empleado empleado = new Empleado(txtNombre.getText(), ff.format(jdFecha.getDate().getTime()), txtCedula.getText(), txtDireccion.getText(), txtTelefono.getText(), cbSexo.getSelectedItem().toString(), txtCargo.getText(), Double.parseDouble(txtSalario.getText()),
+            Empleado empleado = new Empleado(txtNombre.getText(), ff.format(jdFecha.getDate().getTime()), txtCedula.getText(), txtDireccion.getText(), txtTelefono.getText(), cbSexo.getSelectedItem().toString(), txtCargo.getText(), Double.valueOf(txtSalario.getText()),
                 txtNumEmpleado.getText(), txtContrasena.getText());
             boolean existe = false;
             if (!empleados.isEmpty()) {
@@ -722,8 +719,11 @@ public class RegistroEmpleado extends javax.swing.JFrame {
                         existe = true;  
                     }
                 }
-                if (existe = true) {
+                if (existe == true) {
                     JOptionPane.showMessageDialog(null, "El empleado ya ha sido registrado.");
+                    txtNumEmpleado.setText("");
+                    txtContrasena.setText("");
+                    presionadoGenerar=false;
                 } else {
                     existe=false;
                     empleados.add(empleado);
@@ -743,7 +743,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
                     lbFecha.setForeground(Color.white);
                     txtDireccion.setText("");
                     lbDireccion.setForeground(Color.white);
-
+                    presionadoGenerar=false;
                 }
             } else {
                 empleados.add(empleado);
@@ -757,6 +757,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
                 txtContrasena.setText("");
                 lbFecha.setForeground(Color.white);
                 txtDireccion.setText("");
+                 presionadoGenerar=false;
             }
 
         }

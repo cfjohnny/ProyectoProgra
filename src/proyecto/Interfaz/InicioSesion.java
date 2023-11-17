@@ -33,9 +33,9 @@ public class InicioSesion extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtxContrasenna = new javax.swing.JTextField();
         btnIngresar = new javax.swing.JButton();
         btnRegistro = new javax.swing.JButton();
+        pwdContrasenna = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -89,20 +89,20 @@ public class InicioSesion extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(134, 134, 134))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtxContrasenna, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
-                    .addComponent(txtUsuario))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(151, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
                     .addComponent(btnIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(146, 146, 146))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUsuario)
+                    .addComponent(pwdContrasenna, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,15 +116,15 @@ public class InicioSesion extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(txtxContrasenna, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71)
+                .addComponent(pwdContrasenna, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
                 .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnRegistro)
                 .addContainerGap(334, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 0, 510, 860));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 510, 860));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pexels-pixabay-162240.jpg"))); // NOI18N
         jLabel2.setLabelFor(this);
@@ -137,26 +137,28 @@ public class InicioSesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        
-        if (registro.empleados.isEmpty()){
+        boolean existe = false;
+        if (registro.empleados.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Lo sentimos, no existe ningún empleado registrado");
         } else {
-            for (int i = 0; i < 10; i++) {
-                if(txtUsuario.getText().equals(registro.empleados.get(i).getIdEmpleado())&&txtxContrasenna.getText().equals(registro.empleados.get(i).getContrasena())){
+            for (int i = 0; i < registro.empleados.size(); i++) {
+                if (txtUsuario.getText().equals(registro.empleados.get(i).getIdEmpleado()) && String.valueOf(pwdContrasenna.getPassword()).equals(registro.empleados.get(i).getContrasena())) {
                     MenuPrincipal menu = new MenuPrincipal();
                     menu.setVisible(true);
                     menu.setLocationRelativeTo(null);
-                } else {
-                    if(!txtUsuario.getText().equals(registro.empleados.get(i).getIdEmpleado()) || !txtxContrasenna.getText().equals(registro.empleados.get(i).getContrasena())){
-                        JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecto.");
-                    }
+                    existe=true;
+                } else if (!txtUsuario.getText().equals(registro.empleados.get(i).getIdEmpleado())
+                        || !String.valueOf(pwdContrasenna.getPassword()).equals(registro.empleados.get(i).getContrasena())) {
+                    existe = false;
                 }
+            }
+            if(existe==false){
+                JOptionPane.showMessageDialog(null, "Error. Usuario o contraseña incorrecto.");
             }
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
-
         registro.setVisible(true);
         registro.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnRegistroActionPerformed
@@ -204,7 +206,7 @@ public class InicioSesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField pwdContrasenna;
     private javax.swing.JTextField txtUsuario;
-    private javax.swing.JTextField txtxContrasenna;
     // End of variables declaration//GEN-END:variables
 }
