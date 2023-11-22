@@ -54,9 +54,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel1.setPreferredSize(new java.awt.Dimension(387, 0));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1290, 860));
+        setMinimumSize(new java.awt.Dimension(1130, 720));
         setResizable(false);
-        setSize(new java.awt.Dimension(1290, 860));
+        setSize(new java.awt.Dimension(1280, 1024));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jBtnEmpleado.setBackground(new java.awt.Color(238, 238, 238));
@@ -109,7 +109,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vaquero.png"))); // NOI18N
         jLabel2.setAlignmentX(0.6F);
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 60, 70));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 60, 70));
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -125,7 +125,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 jBtnEliminarUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(jBtnEliminarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 620, 120, 30));
+        getContentPane().add(jBtnEliminarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 590, 120, 30));
 
         jtxtNombre.setBackground(new java.awt.Color(232, 232, 232));
         jtxtNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario.png"))); // NOI18N
@@ -134,7 +134,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jtxtNombre.setMinimumSize(new java.awt.Dimension(80, 20));
         jtxtNombre.setOpaque(true);
         jtxtNombre.setPreferredSize(new java.awt.Dimension(150, 40));
-        getContentPane().add(jtxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+        getContentPane().add(jtxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
         jtxtCedula.setBackground(new java.awt.Color(232, 232, 232));
         jtxtCedula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario.png"))); // NOI18N
@@ -143,7 +143,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jtxtCedula.setMinimumSize(new java.awt.Dimension(80, 20));
         jtxtCedula.setOpaque(true);
         jtxtCedula.setPreferredSize(new java.awt.Dimension(150, 40));
-        getContentPane().add(jtxtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
+        getContentPane().add(jtxtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
 
         jtxtCargo.setBackground(new java.awt.Color(232, 232, 232));
         jtxtCargo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario.png"))); // NOI18N
@@ -152,7 +152,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jtxtCargo.setMinimumSize(new java.awt.Dimension(80, 20));
         jtxtCargo.setOpaque(true);
         jtxtCargo.setPreferredSize(new java.awt.Dimension(150, 40));
-        getContentPane().add(jtxtCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, -1, -1));
+        getContentPane().add(jtxtCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, -1, -1));
 
         jtxtNumUsuario.setBackground(new java.awt.Color(232, 232, 232));
         jtxtNumUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario.png"))); // NOI18N
@@ -161,13 +161,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jtxtNumUsuario.setMinimumSize(new java.awt.Dimension(80, 20));
         jtxtNumUsuario.setOpaque(true);
         jtxtNumUsuario.setPreferredSize(new java.awt.Dimension(150, 40));
-        getContentPane().add(jtxtNumUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, -1, -1));
+        getContentPane().add(jtxtNumUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, -1, -1));
 
-        jBtnReporte.setBackground(new java.awt.Color(204, 204, 204));
+        jBtnReporte.setBackground(new java.awt.Color(249, 249, 249));
         jBtnReporte.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         jBtnReporte.setText("Generar Reporte");
         jBtnReporte.setAlignmentX(0.6F);
-        jBtnReporte.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jBtnReporte.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jBtnReporte.setPreferredSize(new java.awt.Dimension(116, 23));
         jBtnReporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,32 +176,35 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(jBtnReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 510, 300, 100));
 
-        jLabel5.setBackground(new java.awt.Color(0, 102, 153));
+        jLabel5.setBackground(new java.awt.Color(0, 51, 102));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Menú Principal");
         jLabel5.setOpaque(true);
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 880, 140));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 880, 140));
 
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setBackground(new java.awt.Color(252, 252, 252));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pexels-los-muertos-crew-10041309.jpg"))); // NOI18N
         jLabel6.setToolTipText("");
         jLabel6.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel6.setOpaque(true);
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 190, 150, 260));
 
-        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setBackground(new java.awt.Color(252, 252, 252));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pexels-david-mcbee-730547.jpg"))); // NOI18N
         jLabel7.setToolTipText("");
         jLabel7.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel7.setOpaque(true);
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 190, 150, 260));
 
-        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setBackground(new java.awt.Color(252, 252, 252));
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pexels-kat-smith-593899 (1).jpg"))); // NOI18N
         jLabel9.setToolTipText("");
         jLabel9.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel9.setOpaque(true);
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 150, 260));
 
@@ -209,11 +212,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel10.setText("LIBRES Y AMADOS");
         jLabel10.setAlignmentX(0.6F);
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 220, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 220, -1));
 
-        jLabel3.setBackground(new java.awt.Color(232, 232, 232));
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setOpaque(true);
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 880, 580));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, 880, 580));
 
         jBtnCerrarSesion2.setText("Cerrar Sesión");
         jBtnCerrarSesion2.setAlignmentX(0.6F);
@@ -223,7 +226,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 jBtnCerrarSesion2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jBtnCerrarSesion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 580, 120, 30));
+        getContentPane().add(jBtnCerrarSesion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 550, 120, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

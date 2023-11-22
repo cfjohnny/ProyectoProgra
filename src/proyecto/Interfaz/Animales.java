@@ -8,12 +8,12 @@ package proyecto.Interfaz;
  *
  * @author fallaa8
  */
-public class Padrinos extends javax.swing.JFrame {
+public class Animales extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistroUsuarios
      */
-    public Padrinos() {
+    public Animales() {
         initComponents();
         setDefaultCloseOperation(MenuPrincipal2.HIDE_ON_CLOSE);
     }
@@ -38,6 +38,7 @@ public class Padrinos extends javax.swing.JFrame {
         ELIMINAR = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jtxtCedula = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -84,7 +85,7 @@ public class Padrinos extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 590, 140, 40));
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 560, 140, 40));
 
         jtxtNumUsuario.setBackground(new java.awt.Color(232, 232, 232));
         jtxtNumUsuario.setAlignmentX(0.6F);
@@ -128,18 +129,18 @@ public class Padrinos extends javax.swing.JFrame {
                 ELIMINARActionPerformed(evt);
             }
         });
-        getContentPane().add(ELIMINAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 590, 140, 40));
+        getContentPane().add(ELIMINAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 560, 140, 40));
 
-        jButton3.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
+        jButton3.setBackground(new java.awt.Color(0, 153, 153));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("MODIFICAR");
+        jButton3.setText("APADRINAR");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 330, 140, 40));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 650, 440, 40));
 
         jButton2.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Green"));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -151,7 +152,18 @@ public class Padrinos extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 140, 40));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 140, 40));
+
+        jButton4.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
+        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("MODIFICAR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 300, 140, 40));
 
         jtxtCedula.setBackground(new java.awt.Color(232, 232, 232));
         jtxtCedula.setAlignmentX(0.6F);
@@ -165,7 +177,7 @@ public class Padrinos extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Menú Padrinos");
+        jLabel5.setText("Menú Animales");
         jLabel5.setOpaque(true);
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 880, 140));
 
@@ -176,7 +188,7 @@ public class Padrinos extends javax.swing.JFrame {
         jLabel9.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel9.setOpaque(true);
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 190, 180, 200));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 160, 180, 200));
 
         jLabel13.setBackground(new java.awt.Color(252, 252, 252));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -185,7 +197,7 @@ public class Padrinos extends javax.swing.JFrame {
         jLabel13.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel13.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel13.setOpaque(true);
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 450, 180, 200));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 420, 180, 200));
 
         jLabel14.setBackground(new java.awt.Color(252, 252, 252));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -194,7 +206,7 @@ public class Padrinos extends javax.swing.JFrame {
         jLabel14.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel14.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel14.setOpaque(true);
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, 180, 200));
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 420, 180, 200));
 
         jLabel15.setBackground(new java.awt.Color(252, 252, 252));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -203,7 +215,7 @@ public class Padrinos extends javax.swing.JFrame {
         jLabel15.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel15.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLabel15.setOpaque(true);
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, 180, 200));
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 180, 200));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setOpaque(true);
@@ -238,6 +250,10 @@ public class Padrinos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnCerrarSesion2ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -255,21 +271,23 @@ public class Padrinos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Padrinos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Animales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Padrinos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Animales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Padrinos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Animales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Padrinos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Animales.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Padrinos().setVisible(true);
+                new Animales().setVisible(true);
             }
         });
     }
@@ -280,6 +298,7 @@ public class Padrinos extends javax.swing.JFrame {
     private javax.swing.JButton jBtnEliminarUsuario;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
