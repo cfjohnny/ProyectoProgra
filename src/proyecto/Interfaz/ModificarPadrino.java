@@ -12,9 +12,8 @@ import javax.swing.JOptionPane;
  */
 public class ModificarPadrino extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ModificarPadrino
-     */
+    RegistroPadrino padrino = new RegistroPadrino();
+    
     public ModificarPadrino() {
         initComponents();
     }
@@ -33,11 +32,10 @@ public class ModificarPadrino extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         lbTitulo = new javax.swing.JLabel();
+        txtCedula = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
-        txtTelefono = new javax.swing.JTextField();
         jdFecha = new com.toedter.calendar.JDateChooser();
         txtOcupacion = new javax.swing.JTextField();
-        txtCedula = new javax.swing.JTextField();
         btnRegistrar = new javax.swing.JButton();
         cbSexo = new javax.swing.JComboBox<>();
         txtMontoDonar = new javax.swing.JTextField();
@@ -45,6 +43,8 @@ public class ModificarPadrino extends javax.swing.JFrame {
         rbEfectivo = new javax.swing.JRadioButton();
         rbSINPE = new javax.swing.JRadioButton();
         rbTarjeta = new javax.swing.JRadioButton();
+        txtTelefono1 = new javax.swing.JTextField();
+        btnRegistrar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -64,32 +64,34 @@ public class ModificarPadrino extends javax.swing.JFrame {
         lbTitulo.setForeground(new java.awt.Color(0, 51, 102));
         lbTitulo.setText("MODIFICAR PADRINO");
 
+        txtCedula.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtCedula.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtCedula.setToolTipText("");
+        txtCedula.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ingrese el número de cédula", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtCedula.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        txtCedula.setHighlighter(null);
+        txtCedula.setName(""); // NOI18N
+        txtCedula.setOpaque(true);
+        txtCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCedulaActionPerformed(evt);
+            }
+        });
+
         txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtNombre.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtNombre.setToolTipText("");
-        txtNombre.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ingrese el número de cédula", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-        txtNombre.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        txtNombre.setHighlighter(null);
-        txtNombre.setName(""); // NOI18N
-        txtNombre.setOpaque(true);
+        txtNombre.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombre", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtNombre.setEnabled(false);
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
             }
         });
 
-        txtTelefono.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtTelefono.setToolTipText("");
-        txtTelefono.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Número de Teléfono", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelefonoActionPerformed(evt);
-            }
-        });
-
         jdFecha.setBackground(new java.awt.Color(255, 255, 255));
         jdFecha.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha de nacimiento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
         jdFecha.setDateFormatString("yyyy/MM/dd");
+        jdFecha.setEnabled(false);
         jdFecha.setRequestFocusEnabled(false);
         jdFecha.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -99,25 +101,17 @@ public class ModificarPadrino extends javax.swing.JFrame {
 
         txtOcupacion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtOcupacion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ocupación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtOcupacion.setEnabled(false);
         txtOcupacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtOcupacionActionPerformed(evt);
             }
         });
 
-        txtCedula.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtCedula.setToolTipText("");
-        txtCedula.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cédula", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-        txtCedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCedulaActionPerformed(evt);
-            }
-        });
-
         btnRegistrar.setBackground(new java.awt.Color(0, 51, 102));
         btnRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistrar.setText("Modificar");
+        btnRegistrar.setText("Buscar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
@@ -127,6 +121,7 @@ public class ModificarPadrino extends javax.swing.JFrame {
         cbSexo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige el sexo", "Hombre", "Mujer" }));
         cbSexo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sexo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        cbSexo.setEnabled(false);
         cbSexo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbSexoActionPerformed(evt);
@@ -135,6 +130,7 @@ public class ModificarPadrino extends javax.swing.JFrame {
 
         txtMontoDonar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtMontoDonar.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Monto a donar", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtMontoDonar.setEnabled(false);
         txtMontoDonar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMontoDonarActionPerformed(evt);
@@ -143,9 +139,11 @@ public class ModificarPadrino extends javax.swing.JFrame {
 
         jpRadioButtons.setBackground(new java.awt.Color(255, 255, 255));
         jpRadioButtons.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Método de pago", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        jpRadioButtons.setEnabled(false);
 
         rbEfectivo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         rbEfectivo.setText("Efectivo");
+        rbEfectivo.setEnabled(false);
         rbEfectivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbEfectivoActionPerformed(evt);
@@ -154,6 +152,7 @@ public class ModificarPadrino extends javax.swing.JFrame {
 
         rbSINPE.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         rbSINPE.setText("SINPE Móvil");
+        rbSINPE.setEnabled(false);
         rbSINPE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbSINPEActionPerformed(evt);
@@ -162,6 +161,7 @@ public class ModificarPadrino extends javax.swing.JFrame {
 
         rbTarjeta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         rbTarjeta.setText("Tarjeta de Débito/Crédito");
+        rbTarjeta.setEnabled(false);
         rbTarjeta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbTarjetaActionPerformed(evt);
@@ -191,27 +191,52 @@ public class ModificarPadrino extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        txtTelefono1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtTelefono1.setToolTipText("");
+        txtTelefono1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Número de Teléfono", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtTelefono1.setEnabled(false);
+        txtTelefono1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefono1ActionPerformed(evt);
+            }
+        });
+
+        btnRegistrar1.setBackground(new java.awt.Color(0, 51, 102));
+        btnRegistrar1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnRegistrar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrar1.setText("Modificar");
+        btnRegistrar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrar1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(29, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtOcupacion, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
-                        .addComponent(cbSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtNombre)
-                        .addComponent(txtTelefono)
-                        .addComponent(jdFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
-                        .addComponent(txtCedula)
-                        .addComponent(jpRadioButtons, javax.swing.GroupLayout.PREFERRED_SIZE, 416, Short.MAX_VALUE)
-                        .addComponent(txtMontoDonar, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addGap(15, 15, 15)
-                            .addComponent(lbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(30, 30, 30))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnRegistrar)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtOcupacion, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
+                                .addComponent(cbSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtCedula)
+                                .addComponent(txtNombre)
+                                .addComponent(jdFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
+                                .addComponent(jpRadioButtons, javax.swing.GroupLayout.PREFERRED_SIZE, 416, Short.MAX_VALUE)
+                                .addComponent(txtMontoDonar, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addGap(15, 15, 15)
+                                    .addComponent(lbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtTelefono1)))
+                        .addGap(30, 30, 30))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(btnRegistrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(157, 157, 157))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,16 +244,16 @@ public class ModificarPadrino extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(lbTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtTelefono)
+                .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRegistrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNombre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTelefono1)
+                .addGap(8, 8, 8)
                 .addComponent(jdFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCedula)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
                 .addComponent(cbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtOcupacion)
@@ -236,7 +261,9 @@ public class ModificarPadrino extends javax.swing.JFrame {
                 .addComponent(txtMontoDonar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpRadioButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(105, 105, 105))
+                .addGap(18, 18, 18)
+                .addComponent(btnRegistrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -283,13 +310,13 @@ public class ModificarPadrino extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
+
+    }//GEN-LAST:event_txtCedulaActionPerformed
+
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-
-    }//GEN-LAST:event_txtNombreActionPerformed
-
-    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelefonoActionPerformed
+    }//GEN-LAST:event_txtNombreActionPerformed
 
     private void jdFechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jdFechaPropertyChange
 
@@ -299,13 +326,11 @@ public class ModificarPadrino extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtOcupacionActionPerformed
 
-    private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCedulaActionPerformed
-
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         try {
-            
+           if(padrino.padrinos.isEmpty()==true){
+               JOptionPane.showMessageDialog(null, "No hay ningún padrino registrado.");
+           }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Lo sentimos, el monto a donar debe ser un dato numérico");
         } catch (Exception e) {
@@ -332,6 +357,14 @@ public class ModificarPadrino extends javax.swing.JFrame {
     private void rbTarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbTarjetaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbTarjetaActionPerformed
+
+    private void txtTelefono1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefono1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelefono1ActionPerformed
+
+    private void btnRegistrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistrar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -370,6 +403,7 @@ public class ModificarPadrino extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnRegistrar1;
     private javax.swing.JComboBox<String> cbSexo;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -385,6 +419,6 @@ public class ModificarPadrino extends javax.swing.JFrame {
     private javax.swing.JTextField txtMontoDonar;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtOcupacion;
-    private javax.swing.JTextField txtTelefono;
+    private javax.swing.JTextField txtTelefono1;
     // End of variables declaration//GEN-END:variables
 }
