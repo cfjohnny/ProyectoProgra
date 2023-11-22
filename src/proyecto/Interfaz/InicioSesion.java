@@ -148,7 +148,7 @@ public class InicioSesion extends javax.swing.JFrame {
         } else {
             for (int i = 0; i < registro.empleados.size(); i++) {
                 if (txtUsuario.getText().equals(registro.empleados.get(i).getIdEmpleado()) && String.valueOf(pwdContrasenna.getPassword()).equals(registro.empleados.get(i).getContrasena())) {
-                    MenuPrincipal menu = new MenuPrincipal();
+                    MenuPrincipal2 menu = new MenuPrincipal2();
                     menu.setVisible(true);
                     menu.setLocationRelativeTo(null);
                     existe = true;

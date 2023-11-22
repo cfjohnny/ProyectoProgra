@@ -15,7 +15,7 @@ public class Padrinos extends javax.swing.JFrame {
      */
     public Padrinos() {
         initComponents();
-        setDefaultCloseOperation(MenuPrincipal.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(MenuPrincipal2.HIDE_ON_CLOSE);
     }
 
     /**

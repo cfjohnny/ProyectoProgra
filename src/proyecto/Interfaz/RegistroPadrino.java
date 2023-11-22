@@ -25,7 +25,7 @@ public class RegistroPadrino extends javax.swing.JFrame {
         initComponents();
         fecha.set(2023, Calendar.NOVEMBER, 11);
         jdFecha.setDate(fecha.getTime());
-        setDefaultCloseOperation(MenuPrincipal.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(MenuPrincipal2.HIDE_ON_CLOSE);
     }
 
     public boolean isEmpty() {
