@@ -14,7 +14,7 @@ public class Padrino extends Persona {
 
     private ArrayList<Animal> animalesApadrinados = new ArrayList<>();
     private String metodoPago;
-    private int montoDonado;
+    private double montoDonado;
     private String ocupacion;
 
     public Padrino() {
@@ -23,18 +23,18 @@ public class Padrino extends Persona {
         this.ocupacion = "";
     }
 
-    public Padrino(String nombre, String fechaNacimiento, String cedula, String direccion, String numeroTelefono, String sexo, String metodoPago, int montoDonado, String ocupacion) {
+    public Padrino(String nombre, String fechaNacimiento, String cedula, String direccion, String numeroTelefono, String sexo, String metodoPago, double montoDonado, String ocupacion) {
         super(nombre, fechaNacimiento, cedula, direccion, numeroTelefono, sexo);
         this.metodoPago = metodoPago;
         this.montoDonado = montoDonado;
         this.ocupacion = ocupacion;
     }
 
-    public int getMontoDonado() {
+    public double getMontoDonado() {
         return montoDonado;
     }
 
-    public void setMontoDonado(int montoDonado) {
+    public void setMontoDonado(double montoDonado) {
         this.montoDonado = montoDonado;
     }
 

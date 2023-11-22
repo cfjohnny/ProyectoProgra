@@ -13,18 +13,18 @@ import java.util.ArrayList;
 public class Empleado extends Persona {
 
     private String cargo;
-    private String salario;
+    private Double salario;
     private String idEmpleado;
     private String contrasena;
     
     public Empleado() {
         this.cargo = "";
-        this.salario = "";
+        this.salario = 0.0;
         this.idEmpleado = "";
         this.contrasena = "";
     }
 
-    public Empleado(String nombre, String fechaNacimiento, String cedula, String direccion, String numeroTelefono, String sexo, String cargo, String Salario, String idEmpleado, String contrasena) {
+    public Empleado(String nombre, String fechaNacimiento, String cedula, String direccion, String numeroTelefono, String sexo, String cargo, Double Salario, String idEmpleado, String contrasena) {
         super(nombre, fechaNacimiento, cedula, direccion, numeroTelefono, sexo);
         this.cargo = cargo;
         this.salario = Salario;
@@ -48,11 +48,11 @@ public class Empleado extends Persona {
         this.cargo = cargo;
     }
 
-    public String getSalario() {
+    public Double getSalario() {
         return salario;
     }
 
-    public void setSalario(String salario) {
+    public void setSalario(Double salario) {
         this.salario = salario;
     }
 
