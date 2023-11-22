@@ -389,7 +389,7 @@
                     </TitledBorder>
                   </Border>
                 </Property>
-                <Property name="dateFormatString" type="java.lang.String" value="dd/MM/yyyy"/>
+                <Property name="dateFormatString" type="java.lang.String" value="yyyy/MM/dd"/>
                 <Property name="requestFocusEnabled" type="boolean" value="false"/>
               </Properties>
               <Events>

@@ -20,9 +20,8 @@ import proyecto.Empleado;
 public class RegistroEmpleado extends javax.swing.JFrame {
 
     boolean presionadoGenerar;
-    ArrayList<Empleado> empleados = new ArrayList<>();
+    public ArrayList<Empleado> empleados = new ArrayList<>();
     Calendar fecha = Calendar.getInstance();
-
     /**
      * Creates new form RegistroEmpleado
      */
@@ -187,7 +186,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
 
         jdFecha.setBackground(new java.awt.Color(255, 255, 255));
         jdFecha.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha de nacimiento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-        jdFecha.setDateFormatString("dd/MM/yyyy");
+        jdFecha.setDateFormatString("yyyy/MM/dd");
         jdFecha.setRequestFocusEnabled(false);
         jdFecha.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -665,10 +664,10 @@ public class RegistroEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_jdFechaPropertyChange
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        SimpleDateFormat ff = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat ff = new SimpleDateFormat("yyyy/MM/dd");
         Date fecha = jdFecha.getDate();
         try {
-            if ((txtCargo.getText().isEmpty() || txtCedula.getText().isEmpty() || "11/11/2023".equals(ff.format(jdFecha.getDate().getTime())) || txtNombre.getText().isEmpty()
+            if ((txtCargo.getText().isEmpty() || txtCedula.getText().isEmpty() || "2023/11/11".equals(ff.format(jdFecha.getDate().getTime())) || txtNombre.getText().isEmpty()
                 || txtTelefono.getText().isEmpty() || txtDireccion.getText().isEmpty() || txtSalario.getText().isEmpty()) || cbSexo.getSelectedIndex() == 0) {
             if (txtCargo.getText().isEmpty()) {
                 lbCargo.setForeground(Color.red);

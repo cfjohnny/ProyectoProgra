@@ -5,6 +5,7 @@
 package proyecto.Interfaz;
 
 import javax.swing.JOptionPane;
+import proyecto.Empleado;
 
 /**
  *
@@ -16,7 +17,7 @@ public class InicioSesion extends javax.swing.JFrame {
 
     public InicioSesion() {
         initComponents();
-
+        
     }
 
     /**
@@ -137,6 +138,10 @@ public class InicioSesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+
+        Empleado empleado = new Empleado("Test", "2003/08/11", "123", "cr", "123", "mujer", "vet", 2300.0, "11123", "LA123");
+        registro.empleados.add(empleado);
+
         boolean existe = false;
         if (registro.empleados.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Lo sentimos, no existe ningún empleado registrado");
@@ -146,13 +151,13 @@ public class InicioSesion extends javax.swing.JFrame {
                     MenuPrincipal menu = new MenuPrincipal();
                     menu.setVisible(true);
                     menu.setLocationRelativeTo(null);
-                    existe=true;
+                    existe = true;
                 } else if (!txtUsuario.getText().equals(registro.empleados.get(i).getIdEmpleado())
                         || !String.valueOf(pwdContrasenna.getPassword()).equals(registro.empleados.get(i).getContrasena())) {
                     existe = false;
                 }
             }
-            if(existe==false){
+            if (existe == false) {
                 JOptionPane.showMessageDialog(null, "Error. Usuario o contraseña incorrecto.");
             }
         }
