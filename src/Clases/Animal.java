@@ -12,6 +12,7 @@ import java.util.ArrayList;
  */
 public class Animal {
 
+    private int idAnimal;
     private String nombre;
     private String fechaNacimiento;
     private String especie;
@@ -22,8 +23,7 @@ public class Animal {
     private String tipoAlimentacion;
     private String apadrinado;
     private String padrino;//almacena la cedula del padrino
-    private int idAnimal;
-    
+
     public Animal() {
         this.nombre = "";
         this.fechaNacimiento = "";
@@ -38,7 +38,7 @@ public class Animal {
         this.idAnimal = 0;
     }
 
-    public Animal(String nombre, String fechaNacimiento, String especie, String estadoSalud, double peso, String genero, String historia, String tipoAlimentacion, String apadrinado, String padrino, int idAnimal) {
+    public Animal(int idAnimal, String nombre, String fechaNacimiento, String especie, String estadoSalud, double peso, String genero, String historia, String tipoAlimentacion, String apadrinado, String padrino) {
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.especie = especie;
@@ -67,7 +67,6 @@ public class Animal {
     public void setIdAnimal(int idAnimal) {
         this.idAnimal = idAnimal;
     }
-
 
     public String getApadrinado() {
         return apadrinado;
