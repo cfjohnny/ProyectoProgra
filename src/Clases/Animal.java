@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proyecto;
+package Clases;
 
 import java.util.ArrayList;
 
@@ -21,7 +21,7 @@ public class Animal {
     private String historia;
     private String tipoAlimentacion;
     private String apadrinado;
-    private Padrino padrino;
+    private String padrino;//almacena la cedula del padrino
     private int idAnimal;
     
     public Animal() {
@@ -34,11 +34,11 @@ public class Animal {
         this.historia = "";
         this.tipoAlimentacion = "";
         this.apadrinado = "Disponible";
-        this.padrino = new Padrino();//consultarle a la profe
+        this.padrino = "";//consultarle a la profe
         this.idAnimal = 0;
     }
 
-    public Animal(String nombre, String fechaNacimiento, String especie, String estadoSalud, double peso, String genero, String historia, String tipoAlimentacion, String apadrinado, Padrino padrino, int idAnimal) {
+    public Animal(String nombre, String fechaNacimiento, String especie, String estadoSalud, double peso, String genero, String historia, String tipoAlimentacion, String apadrinado, String padrino, int idAnimal) {
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.especie = especie;
@@ -52,11 +52,11 @@ public class Animal {
         this.idAnimal = idAnimal;
     }
 
-    public Padrino getPadrino() {
+    public String getPadrino() {
         return padrino;
     }
 
-    public void setPadrino(Padrino padrino) {
+    public void setPadrino(String padrino) {
         this.padrino = padrino;
     }
 
