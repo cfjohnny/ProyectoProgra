@@ -8,8 +8,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
-import Clases.Main;
+import Clases.*;
 import Clases.Padrino;
+import Modelo.DatosPadrinos;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,14 +21,19 @@ public class ModificarPadrino extends javax.swing.JFrame {
 
     RegistroPadrino padrino = new RegistroPadrino();
     Calendar fecha = Calendar.getInstance();
-    SimpleDateFormat ff = new SimpleDateFormat("yyyy/MM/dd");
+    SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
+    DatosPadrinos datos = new DatosPadrinos();
+    ArrayList<Padrino> padrinos = new ArrayList<>();
 
     public ModificarPadrino() {
         initComponents();
         setDefaultCloseOperation(Padrinos.HIDE_ON_CLOSE);
-
+        cargarDatos();
     }
 
+    public void cargarDatos(){
+        padrinos = datos.todosPadrinos();
+    }
     private void habilitar(boolean si) {
         txtNombre.setEnabled(si);
         txtDireccion.setEnabled(si);
@@ -58,7 +65,7 @@ public class ModificarPadrino extends javax.swing.JFrame {
         if (txtNombre.getText().isEmpty() || txtCedula.getText().isEmpty() || txtTelefono1.getText().isEmpty()
                 || txtDireccion.getText().isEmpty() || txtOcupacion.getText().isEmpty() || txtMontoDonar.getText().isEmpty()
                 || (rbEfectivo.isSelected() == false && rbSINPE.isSelected() == false && rbTarjeta.isSelected() == false) || txtCedula.getText().isEmpty()
-                || "2023/11/11".equals(ff.format(jdFecha.getDate().getTime()))) {
+                || "2023-11-11".equals(ff.format(jdFecha.getDate().getTime()))) {
             lleno = false;
         } else {
             lleno = true;
@@ -441,8 +448,8 @@ public class ModificarPadrino extends javax.swing.JFrame {
             String metodo = "";
             boolean habilitado = false;
             int indice = 0;
-            for (int i = 0; i < Main.padrinos.size(); i++) {
-                if (txtCedula.getText().equals(Main.padrinos.get(i).getCedula())) {
+            for (int i = 0; i < padrinos.size(); i++) {
+                if (txtCedula.getText().equals(padrinos.get(i).getCedula())) {
                     indice = i;
                 }
             }
@@ -454,13 +461,10 @@ public class ModificarPadrino extends javax.swing.JFrame {
                 } else if (rbTarjeta.isSelected() == true) {
                     metodo = rbTarjeta.getText();
                 }
-                Padrino padrino = new Padrino(txtNombre.getText(), ff.format(jdFecha.getDate().getTime()),
+                datos.modificar(txtNombre.getText(), ff.format(jdFecha.getDate().getTime()),
                         txtCedula.getText(), txtDireccion.getText(), txtTelefono1.getText(), cbSexo.getSelectedItem().toString(),
                         metodo, Double.parseDouble(txtMontoDonar.getText()), txtOcupacion.getText());
-                Main.padrinos.remove(indice);
-                Main.padrinos.add(indice, padrino);
                 JOptionPane.showMessageDialog(null, "El(la) padrino/madrina ha sido modificado satisfactoriamente");
-                JOptionPane.showMessageDialog(null, Main.padrinos.toString());
                 habilitar(habilitado);
                 txtCedula.setText("");
                 clear();
@@ -482,30 +486,30 @@ public class ModificarPadrino extends javax.swing.JFrame {
         try {
             boolean existe = false;
             int indice = 0;
-            if (Main.padrinos.isEmpty() == true) {
+            if (padrinos.isEmpty() == true) {
                 JOptionPane.showMessageDialog(null, "No hay ningún padrino registrado.");
             } else {
-                for (int i = 0; i < Main.padrinos.size(); i++) {
-                    if (txtCedula.getText().equals(Main.padrinos.get(i).getCedula())) {
+                for (int i = 0; i < padrinos.size(); i++) {
+                    if (txtCedula.getText().equals(padrinos.get(i).getCedula())) {
                         existe = true;
                         indice = i;
                     }
                 }
                 if (existe == true) {
                     habilitar(true);
-                    txtNombre.setText(Main.padrinos.get(indice).getNombre());
-                    txtDireccion.setText(String.valueOf(Main.padrinos.get(indice).getDireccion()));
-                    txtOcupacion.setText(Main.padrinos.get(indice).getOcupacion());
-                    txtTelefono1.setText(Main.padrinos.get(indice).getNumeroTelefono());
-                    Date date = ff.parse(Main.padrinos.get(indice).getFechaNacimiento());
+                    txtNombre.setText(padrinos.get(indice).getNombre());
+                    txtDireccion.setText(String.valueOf(padrinos.get(indice).getDireccion()));
+                    txtOcupacion.setText(padrinos.get(indice).getOcupacion());
+                    txtTelefono1.setText(padrinos.get(indice).getNumeroTelefono());
+                    Date date = ff.parse(padrinos.get(indice).getFechaNacimiento());
                     jdFecha.setDate(date);
-                    cbSexo.setSelectedItem(Main.padrinos.get(indice).getSexo());
-                    txtMontoDonar.setText(String.valueOf(Main.padrinos.get(indice).getMetodoPago()));
-                    if(rbEfectivo.getText().toString().equals(Main.padrinos.get(indice).getMontoDonado())){
+                    cbSexo.setSelectedItem(padrinos.get(indice).getSexo());
+                    txtMontoDonar.setText(String.valueOf(padrinos.get(indice).getMetodoPago()));
+                    if (rbEfectivo.getText().toString().equals(padrinos.get(indice).getMontoDonado())) {
                         rbEfectivo.setSelected(true);
-                    } else if(rbSINPE.getText().toString().equals(Main.padrinos.get(indice).getMetodoPago())){
+                    } else if (rbSINPE.getText().toString().equals(padrinos.get(indice).getMetodoPago())) {
                         rbSINPE.setSelected(true);
-                    } else if(rbTarjeta.getText().toString().equals(Main.padrinos.get(indice).getMetodoPago())){
+                    } else if (rbTarjeta.getText().toString().equals(padrinos.get(indice).getMetodoPago())) {
                         rbTarjeta.setSelected(true);
                     }
                 } else {

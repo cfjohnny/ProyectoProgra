@@ -40,7 +40,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jtxtCedula = new javax.swing.JLabel();
         jtxtCargo = new javax.swing.JLabel();
         jtxtNumUsuario = new javax.swing.JLabel();
-        jBtnReporte = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -154,19 +153,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jtxtNumUsuario.setPreferredSize(new java.awt.Dimension(150, 40));
         getContentPane().add(jtxtNumUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, -1, -1));
 
-        jBtnReporte.setBackground(new java.awt.Color(255, 204, 204));
-        jBtnReporte.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jBtnReporte.setText("Generar Reporte");
-        jBtnReporte.setAlignmentX(0.6F);
-        jBtnReporte.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jBtnReporte.setPreferredSize(new java.awt.Dimension(116, 23));
-        jBtnReporte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnReporteActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jBtnReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 510, 300, 100));
-
         jLabel5.setBackground(new java.awt.Color(0, 51, 102));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -251,10 +237,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Main.padrino.setLocationRelativeTo(null);
     }//GEN-LAST:event_jBtnPadrinosActionPerformed
 
-    private void jBtnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnReporteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBtnReporteActionPerformed
-
     private void jBtnCerrarSesion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCerrarSesion2ActionPerformed
         Main.menu.setVisible(false);
         Main.iniciar.setVisible(true);
@@ -305,7 +287,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jBtnCerrarSesion2;
     private javax.swing.JButton jBtnEmpleado;
     private javax.swing.JButton jBtnPadrinos;
-    private javax.swing.JButton jBtnReporte;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

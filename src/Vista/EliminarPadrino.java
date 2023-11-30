@@ -5,18 +5,28 @@
 package Vista;
 
 import javax.swing.JOptionPane;
-import Clases.Main;
+import Clases.*;
+import Modelo.DatosPadrinos;
+import java.util.ArrayList;
 
 /**
  *
  * @author Ariana
  */
 public class EliminarPadrino extends javax.swing.JFrame {
+
     RegistroPadrino padrino = new RegistroPadrino();
-    
+    DatosPadrinos datos = new DatosPadrinos();
+    ArrayList<Padrino> padrinos = new ArrayList<>();
+
     public EliminarPadrino() {
         initComponents();
         setDefaultCloseOperation(Padrinos.HIDE_ON_CLOSE);
+        cargarDatos();
+    }
+
+    public void cargarDatos() {
+        padrinos = datos.todosPadrinos();
     }
 
     /**
@@ -169,20 +179,21 @@ public class EliminarPadrino extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         try {
+            cargarDatos();
             boolean existe = false;
             int indice = 0;
-            if (Main.padrinos.isEmpty()==true) {
+            if (padrinos.isEmpty() == true) {
                 JOptionPane.showMessageDialog(null, "No hay ningún padrino registrado.");
             } else {
                 for (int i = 0; i < Main.padrinos.size(); i++) {
-                    if (txtCedula.getText().equals(Main.padrinos.get(i).getCedula())) {
+                    if (txtCedula.getText().equals(padrinos.get(i).getCedula())) {
                         existe = true;
                         indice = i;
                     }
                 }
                 if (existe == true) {
                     txtNombre.setEnabled(true);
-                    txtNombre.setText(Main.padrinos.get(indice).getNombre());
+                    txtNombre.setText(padrinos.get(indice).getNombre());
                 } else {
                     throw new Exception("El padrino buscado no existe.");
                 }
@@ -193,20 +204,15 @@ public class EliminarPadrino extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        int indice=0;
-       int opcion= JOptionPane.showConfirmDialog(null, "Realmente desea eliminar el registro?","Confirmación", JOptionPane.YES_NO_CANCEL_OPTION);
-        if(JOptionPane.YES_OPTION==opcion){
-            for (int i = 0; i < Main.padrinos.size(); i++) {
-                if(txtCedula.getText().equals(Main.padrinos.get(i).getCedula())){
-                    indice=i;
-                }
-            }
-            Main.padrinos.remove(indice);
+        int indice = 0;
+        int opcion = JOptionPane.showConfirmDialog(null, "Realmente desea eliminar el registro?", "Confirmación", JOptionPane.YES_NO_CANCEL_OPTION);
+        if (JOptionPane.YES_OPTION == opcion) {
+            datos.eliminar(txtCedula.getText());
             txtCedula.setText("");
             txtNombre.setText("");
             JOptionPane.showMessageDialog(null, "Padrino eliminado con éxito.");
         }
-        
+
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**

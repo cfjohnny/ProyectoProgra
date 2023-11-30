@@ -4,19 +4,33 @@
  */
 package Vista;
 
+import Clases.Animal;
+import Clases.Empleado;
 import javax.swing.JOptionPane;
 import Clases.Main;
+import Modelo.DatosAnimales;
+import Modelo.DatosEmpleado;
+import java.util.ArrayList;
 
 /**
  *
  * @author Ariana
  */
 public class EliminarAnimal extends javax.swing.JFrame {
-   
-    
+
+    DatosAnimales datos = new DatosAnimales();
+    ArrayList<Animal> animal = new ArrayList<>();
+
+
     public EliminarAnimal() {
         initComponents();
-        setDefaultCloseOperation(Padrinos.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(Animales.HIDE_ON_CLOSE);
+        cargarDatos();
+    }
+
+    
+    public void cargarDatos() {
+        animal = datos.todosAnimales();
     }
 
     /**
@@ -38,6 +52,7 @@ public class EliminarAnimal extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAutoRequestFocus(false);
         setSize(new java.awt.Dimension(1400, 1024));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -169,22 +184,23 @@ public class EliminarAnimal extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         try {
+            cargarDatos();
             boolean existe = false;
             int indice = 0;
-            if (Main.animal.isEmpty()==true) {
+            if (animal.isEmpty() == true) {
                 JOptionPane.showMessageDialog(null, "No hay ningún animal registrado.");
             } else {
-                for (int i = 0; i < Main.padrinos.size(); i++) {
-                    if (txtID.getText().equals(Main.animal.get(i).getIdAnimal())) {
+                for (int i = 0; i < animal.size(); i++) {
+                    if (Integer.parseInt(txtID.getText())==animal.get(i).getIdAnimal()) {
                         existe = true;
                         indice = i;
                     }
                 }
                 if (existe == true) {
                     txtNombre.setEnabled(true);
-                    txtNombre.setText(Main.animal.get(indice).getNombre());
+                    txtNombre.setText(animal.get(indice).getNombre());
                 } else {
-                    throw new Exception("El padrino buscado no existe.");
+                    throw new Exception("El animal buscado no existe.");
                 }
             }
         } catch (Exception e) {
@@ -193,20 +209,15 @@ public class EliminarAnimal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        int indice=0;
-       int opcion= JOptionPane.showConfirmDialog(null, "Realmente desea eliminar el registro?","Confirmación", JOptionPane.YES_NO_CANCEL_OPTION);
-        if(JOptionPane.YES_OPTION==opcion){
-            for (int i = 0; i < Main.padrinos.size(); i++) {
-                if(txtID.getText().equals(Main.animal.get(i).getIdAnimal())){
-                    indice=i;
-                }
-            }
-            Main.padrinos.remove(indice);
+        int indice = 0;
+        int opcion = JOptionPane.showConfirmDialog(null, "Realmente desea eliminar el registro?", "Confirmación", JOptionPane.YES_NO_CANCEL_OPTION);
+        if (JOptionPane.YES_OPTION == opcion) {
+            datos.eliminar(txtID.getText());
             txtID.setText("");
             txtNombre.setText("");
-            JOptionPane.showMessageDialog(null, "Padrino eliminado con éxito.");
         }
-        
+
+
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**

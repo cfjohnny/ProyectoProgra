@@ -10,6 +10,7 @@ import java.util.Calendar;
 import javax.swing.JOptionPane;
 import Clases.Main;
 import Clases.Padrino;
+import Modelo.DatosPadrinos;
 
 /**
  *
@@ -20,7 +21,9 @@ public class RegistroPadrino extends javax.swing.JFrame {
     boolean lleno = false;
 //    public static final ArrayList<Padrino> padrinos = new ArrayList<>();
     Calendar fecha = Calendar.getInstance();
-    SimpleDateFormat ff = new SimpleDateFormat("yyyy/MM/dd");
+    SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
+    DatosPadrinos datos = new DatosPadrinos();
+    ArrayList<Padrino> padrinos = new ArrayList<>();
 
     public RegistroPadrino() {
         initComponents();
@@ -29,17 +32,35 @@ public class RegistroPadrino extends javax.swing.JFrame {
         setDefaultCloseOperation(Padrinos.HIDE_ON_CLOSE);
     }
 
+    public void cargarDatos() {
+        padrinos = datos.todosPadrinos();
+    }
+
     public boolean vacio() {
 
         if (txtNombre.getText().isEmpty() || txtCedula.getText().isEmpty() || txtTelefono.getText().isEmpty()
                 || txtDireccion.getText().isEmpty() || txtOcupacion.getText().isEmpty() || txtMontoDonar.getText().isEmpty()
                 || (rbEfectivo.isSelected() == false && rbSINPE.isSelected() == false && rbTarjeta.isSelected() == false) || txtCedula.getText().isEmpty()
-                || "2023/11/11".equals(ff.format(jdFecha.getDate().getTime()))) {
+                || "2023-11-11".equals(ff.format(jdFecha.getDate().getTime()))) {
             lleno = false;
         } else {
             lleno = true;
         }
         return lleno;
+    }
+
+    public void clear() {
+        txtCedula.setText("");
+        txtNombre.setText("");
+        txtDireccion.setText("");
+        txtMontoDonar.setText("");
+        txtOcupacion.setText("");
+        txtTelefono.setText("");
+        cbSexo.setSelectedIndex(0);
+        rbEfectivo.setSelected(false);
+        rbSINPE.setSelected(false);
+        rbTarjeta.setSelected(false);
+        jdFecha.setDate(fecha.getTime());
     }
 
     @SuppressWarnings("unchecked")
@@ -267,6 +288,7 @@ public class RegistroPadrino extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         try {
+            cargarDatos();
             String metodo = "";
             boolean existe = false;
             if (vacio() == true) {
@@ -286,22 +308,11 @@ public class RegistroPadrino extends javax.swing.JFrame {
                     }
                 }
                 if (existe == false) {
-                    Main.padrinos.add(padrino);
+                    datos.insertar(padrino);
                     JOptionPane.showMessageDialog(null, "El(la) padrino/madrina ha sido registrado(a) satisfactoriamente");
-                    JOptionPane.showMessageDialog(null, Main.padrinos.toString());
-                    txtCedula.setText("");
-                    txtNombre.setText("");
-                    txtDireccion.setText("");
-                    txtMontoDonar.setText("");
-                    txtOcupacion.setText("");
-                    txtTelefono.setText("");
-                    cbSexo.setSelectedIndex(0);
-                    rbEfectivo.setSelected(false);
-                    rbSINPE.setSelected(false);
-                    rbTarjeta.setSelected(false);
-                    jdFecha.setDate(fecha.getTime());
-                    int opcion= JOptionPane.showConfirmDialog(null, "Desea registrar otro padrino?", "Confirmar registro", JOptionPane.YES_NO_OPTION);
-                    if(opcion==JOptionPane.NO_OPTION){
+                    clear();
+                    int opcion = JOptionPane.showConfirmDialog(null, "Desea registrar otro padrino?", "Confirmar registro", JOptionPane.YES_NO_OPTION);
+                    if (opcion == JOptionPane.NO_OPTION) {
                         Main.registroPadrino.dispose();
                         Main.padrino.setVisible(true);
                     }

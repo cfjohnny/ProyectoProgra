@@ -4,12 +4,15 @@
  */
 package Vista;
 
+import Clases.Empleado;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import Clases.Main;
 import Clases.Padrino;
+import Modelo.DatosEmpleado;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,12 +22,18 @@ public class ModificarEmpleado extends javax.swing.JFrame {
 
     RegistroPadrino padrino = new RegistroPadrino();
     Calendar fecha = Calendar.getInstance();
-    SimpleDateFormat ff = new SimpleDateFormat("yyyy/MM/dd");
+    SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
+    DatosEmpleado datos = new DatosEmpleado();
+    ArrayList<Empleado> empleados = new ArrayList<>();
 
     public ModificarEmpleado() {
         initComponents();
         setDefaultCloseOperation(Padrinos.HIDE_ON_CLOSE);
+        cargarDatos();
+    }
 
+    public void cargarDatos() {
+        empleados=datos.todosEmpleado();
     }
 
     private void habilitar(boolean si) {
@@ -32,8 +41,10 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         txtDireccion.setEnabled(si);
         txtSalario.setEnabled(si);
         txtCargo.setEnabled(si);
+        txtCedula.setEnabled(si);
         txtTelefono1.setEnabled(si);
         cbSexo.setEnabled(si);
+        jdFecha.setEnabled(si);
     }
 
     private void clear() {
@@ -42,16 +53,17 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         txtSalario.setText("");
         txtCargo.setText("");
         txtTelefono1.setText("");
+        txtCedula.setText("");
         cbSexo.setSelectedIndex(0);
         jdFecha.setDate(fecha.getTime());
     }
 
     public boolean vacio() {
         boolean lleno = false;
-        if (txtNombre.getText().isEmpty() || txtCedula.getText().isEmpty() || txtTelefono1.getText().isEmpty()
+        if (txtNombre.getText().isEmpty() || txtID.getText().isEmpty() || txtTelefono1.getText().isEmpty()
                 || txtDireccion.getText().isEmpty() || txtCargo.getText().isEmpty() || txtSalario.getText().isEmpty()
-                || txtCedula.getText().isEmpty()
-                || "2023/11/11".equals(ff.format(jdFecha.getDate().getTime()))) {
+                || txtID.getText().isEmpty() || cbSexo.getSelectedIndex()==0 || txtCedula.getText().isEmpty()
+                || "2023-11-11".equals(ff.format(jdFecha.getDate().getTime()))) {
             lleno = false;
         } else {
             lleno = true;
@@ -74,7 +86,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         lbTitulo = new javax.swing.JLabel();
-        txtCedula = new javax.swing.JTextField();
+        txtID = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         jdFecha = new com.toedter.calendar.JDateChooser();
         txtCargo = new javax.swing.JTextField();
@@ -85,6 +97,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         btnModificar = new javax.swing.JButton();
         txtDireccion = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
+        txtCedula = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -104,17 +117,17 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         lbTitulo.setForeground(new java.awt.Color(0, 51, 102));
         lbTitulo.setText("MODIFICAR EMPLEADO");
 
-        txtCedula.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtCedula.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtCedula.setToolTipText("");
-        txtCedula.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ingrese el número de cédula", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-        txtCedula.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        txtCedula.setHighlighter(null);
-        txtCedula.setName(""); // NOI18N
-        txtCedula.setOpaque(true);
-        txtCedula.addActionListener(new java.awt.event.ActionListener() {
+        txtID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtID.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtID.setToolTipText("");
+        txtID.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ingrese el ID de empleado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtID.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        txtID.setHighlighter(null);
+        txtID.setName(""); // NOI18N
+        txtID.setOpaque(true);
+        txtID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCedulaActionPerformed(evt);
+                txtIDActionPerformed(evt);
             }
         });
 
@@ -216,6 +229,16 @@ public class ModificarEmpleado extends javax.swing.JFrame {
             }
         });
 
+        txtCedula.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtCedula.setToolTipText("");
+        txtCedula.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cédula", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtCedula.setEnabled(false);
+        txtCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCedulaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -225,20 +248,21 @@ public class ModificarEmpleado extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtCargo, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
                     .addComponent(cbSexo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtCedula)
+                    .addComponent(txtID)
                     .addComponent(txtNombre)
                     .addComponent(jdFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
                     .addComponent(txtSalario, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
-                    .addComponent(txtTelefono1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(btnLimpiar)
                         .addGap(18, 18, 18)
                         .addComponent(btnBuscar))
                     .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
-                    .addComponent(lbTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtTelefono1)
+                    .addComponent(txtCedula))
                 .addGap(30, 30, 30))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(156, 156, 156)
+                .addGap(158, 158, 158)
                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -248,7 +272,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lbTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLimpiar)
@@ -256,20 +280,22 @@ public class ModificarEmpleado extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTelefono1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
                 .addComponent(jdFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
                 .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82))
+                .addGap(40, 40, 40))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -316,9 +342,9 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
+    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
 
-    }//GEN-LAST:event_txtCedulaActionPerformed
+    }//GEN-LAST:event_txtIDActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
@@ -334,8 +360,8 @@ public class ModificarEmpleado extends javax.swing.JFrame {
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         try {
-            txtCedula.setEnabled(true);
-            txtCedula.setText("");
+            txtID.setEnabled(true);
+            txtID.setText("");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -354,21 +380,20 @@ public class ModificarEmpleado extends javax.swing.JFrame {
             String metodo = "";
             boolean habilitado = false;
             int indice = 0;
-            for (int i = 0; i < Main.padrinos.size(); i++) {
-                if (txtCedula.getText().equals(Main.padrinos.get(i).getCedula())) {
+            for (int i = 0; i < empleados.size(); i++) {
+                if (txtID.getText().equals(empleados.get(i).getIdEmpleado())) {
                     indice = i;
                 }
             }
             if (vacio() == true) {
-                Padrino padrino = new Padrino(txtNombre.getText(), ff.format(jdFecha.getDate().getTime()),
-                        txtCedula.getText(), txtDireccion.getText(), txtTelefono1.getText(), cbSexo.getSelectedItem().toString(),
-                        metodo, Double.parseDouble(txtSalario.getText()), txtCargo.getText());
-                Main.padrinos.remove(indice);
-                Main.padrinos.add(indice, padrino);
+                datos.modificar(empleados.get(indice).getIdEmpleado(),
+                        txtNombre.getText(), ff.format(jdFecha.getDate().getTime()), txtID.getText(), txtDireccion.getText() 
+                        , txtTelefono1.getText(), cbSexo.getSelectedItem().toString(), txtCargo.getText(), 
+                        Double.parseDouble(txtSalario.getText()), empleados.get(indice).getContrasena());
                 JOptionPane.showMessageDialog(null, "El(la) padrino/madrina ha sido modificado satisfactoriamente");
                 JOptionPane.showMessageDialog(null, Main.padrinos.toString());
                 habilitar(habilitado);
-                txtCedula.setText("");
+                txtID.setText("");
                 clear();
             } else {
                 throw new Exception("ATENCIÓN. Todos los campos deben ser completados");
@@ -385,30 +410,32 @@ public class ModificarEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDireccionActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        try {
+                try {
+            cargarDatos();
             boolean existe = false;
             int indice = 0;
-            if (Main.padrinos.isEmpty() == true) {
-                JOptionPane.showMessageDialog(null, "No hay ningún padrino registrado.");
+            if (empleados.isEmpty() == true) {
+                JOptionPane.showMessageDialog(null, "No hay ningún empleado registrado.");
             } else {
-                for (int i = 0; i < Main.padrinos.size(); i++) {
-                    if (txtCedula.getText().equals(Main.padrinos.get(i).getCedula())) {
+                for (int i = 0; i < empleados.size(); i++) {
+                    if (txtID.getText().equals(empleados.get(i).getIdEmpleado())) {
                         existe = true;
                         indice = i;
                     }
                 }
                 if (existe == true) {
                     habilitar(true);
-                    txtNombre.setText(Main.padrinos.get(indice).getNombre());
-                    txtDireccion.setText(String.valueOf(Main.padrinos.get(indice).getDireccion()));
-                    txtCargo.setText(Main.padrinos.get(indice).getOcupacion());
-                    txtTelefono1.setText(Main.padrinos.get(indice).getNumeroTelefono());
-                    Date date = ff.parse(Main.padrinos.get(indice).getFechaNacimiento());
+                    txtCedula.setText(empleados.get(indice).getCedula());
+                    txtNombre.setText(empleados.get(indice).getNombre());
+                    txtDireccion.setText(empleados.get(indice).getDireccion());
+                    txtCargo.setText(empleados.get(indice).getCargo());
+                    txtTelefono1.setText(empleados.get(indice).getNumeroTelefono());
+                    Date date = ff.parse(empleados.get(indice).getFechaNacimiento());
                     jdFecha.setDate(date);
-                    cbSexo.setSelectedItem(Main.padrinos.get(indice).getSexo());
-                    txtSalario.setText(String.valueOf(Main.padrinos.get(indice).getMetodoPago()));
+                    cbSexo.setSelectedItem(empleados.get(indice).getSexo());
+                    txtSalario.setText(String.valueOf(empleados.get(indice).getSalario()));
                 } else {
-                    throw new Exception("El padrino buscado no existe.");
+                    throw new Exception("El empleado buscado no existe.");
                 }
             }
         } catch (Exception e) {
@@ -419,6 +446,10 @@ public class ModificarEmpleado extends javax.swing.JFrame {
     private void txtSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSalarioActionPerformed
+
+    private void txtCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCedulaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -471,6 +502,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
     private javax.swing.JTextField txtCargo;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtSalario;
     private javax.swing.JTextField txtTelefono1;

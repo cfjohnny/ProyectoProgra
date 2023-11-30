@@ -222,7 +222,9 @@ public class Empleados extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnEliminarUsuarioActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+      ReportesEmpleado reportes = new ReportesEmpleado();
+      reportes.setVisible(true);
+      reportes.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jBtnCerrarSesion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCerrarSesion2ActionPerformed

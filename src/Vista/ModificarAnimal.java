@@ -9,8 +9,11 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import Clases.Animal;
+import Clases.Empleado;
 import Clases.Main;
 import Clases.Padrino;
+import Modelo.DatosAnimales;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,12 +23,18 @@ public class ModificarAnimal extends javax.swing.JFrame {
 
     RegistroPadrino padrino = new RegistroPadrino();
     Calendar fecha = Calendar.getInstance();
-    SimpleDateFormat ff = new SimpleDateFormat("yyyy/MM/dd");
+    SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
+    DatosAnimales datos = new DatosAnimales();
+    ArrayList<Animal> animal = new ArrayList<>();
 
     public ModificarAnimal() {
         initComponents();
         setDefaultCloseOperation(Padrinos.HIDE_ON_CLOSE);
+        cargarDatos();
+    }
 
+    public void cargarDatos() {
+        animal = datos.todosAnimales();
     }
 
     private void clear() {
@@ -60,7 +69,7 @@ public class ModificarAnimal extends javax.swing.JFrame {
         if (txtNombre.getText().isEmpty() || txtID.getText().isEmpty() || txtHistoria.getText().isEmpty()
                 || txtAlimentacion.getText().isEmpty() || txtHistoria.getText().isEmpty() || txtPeso.getText().isEmpty()
                 || cbApadrinado.getSelectedIndex() == 0 || cbEspecie.getSelectedIndex() == 0 || cbEstadoSalud.getSelectedIndex() == 0 || cbSexo.getSelectedIndex() == 0
-                || "2023/11/11".equals(ff.format(jdFecha.getDate().getTime()))) {
+                || "2023-11-admin11".equals(ff.format(jdFecha.getDate().getTime()))) {
             lleno = false;
         } else {
             lleno = true;
@@ -182,7 +191,7 @@ public class ModificarAnimal extends javax.swing.JFrame {
 
         jdFecha.setBackground(new java.awt.Color(255, 255, 255));
         jdFecha.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fecha de nacimiento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-        jdFecha.setDateFormatString("yyyy/MM/dd");
+        jdFecha.setDateFormatString("yyyy-MM-dd");
         jdFecha.setEnabled(false);
         jdFecha.setRequestFocusEnabled(false);
         jdFecha.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -283,14 +292,12 @@ public class ModificarAnimal extends javax.swing.JFrame {
                 }
             }
             if (vacio() == true) {
-                Animal animal = new Animal(txtNombre.getText(), ff.format(jdFecha.getDate().getTime()),
+                datos.modificar(animal.get(indice).getIdAnimal(), txtNombre.getText(), ff.format(jdFecha.getDate().getTime()),
                         cbEspecie.getSelectedItem().toString(), cbEstadoSalud.getSelectedItem().toString(),
                         Double.parseDouble(txtPeso.getText()), cbSexo.getSelectedItem().toString(), txtHistoria.getText(),
-                        txtAlimentacion.getText(), cbApadrinado.getSelectedItem().toString(), "", Main.idAnimal);
-                Main.animal.remove(indice);
-                Main.animal.add(indice, animal);
-                JOptionPane.showMessageDialog(null, "El(la) padrino/madrina ha sido modificado satisfactoriamente");
-                JOptionPane.showMessageDialog(null, Main.animal.toString());
+                        txtAlimentacion.getText(), cbApadrinado.getSelectedItem().toString(), "");
+
+                JOptionPane.showMessageDialog(null, "El animal ha sido modificado satisfactoriamente");
                 habilitar(habilitado);
                 txtID.setText("");
                 clear();
@@ -309,11 +316,11 @@ public class ModificarAnimal extends javax.swing.JFrame {
             boolean habilitado = true;
             boolean existe = false;
             int indice = 0;
-            if (Main.padrinos.isEmpty() == true) {
+            if (animal.isEmpty() == true) {
                 JOptionPane.showMessageDialog(null, "No hay ningún animal registrado.");
             } else {
-                for (int i = 0; i < Main.padrinos.size(); i++) {
-                    if (Integer.parseInt(txtID.getText())==Main.animal.get(i).getIdAnimal()) {
+                for (int i = 0; i < animal.size(); i++) {
+                    if (Integer.parseInt(txtID.getText()) == animal.get(i).getIdAnimal()) {
                         existe = true;
                         indice = i;
                     }
@@ -321,17 +328,17 @@ public class ModificarAnimal extends javax.swing.JFrame {
                 if (existe == true) {
                     habilitar(habilitado);
                     txtID.setEnabled(true);
-                    txtNombre.setText(Main.animal.get(indice).getNombre());
-                    txtPeso.setText(String.valueOf(Main.animal.get(indice).getPeso()));
-                    txtAlimentacion.setText(Main.animal.get(indice).getTipoAlimentacion());
-                    txtHistoria.setText(Main.animal.get(indice).getHistoria());
+                    txtNombre.setText(animal.get(indice).getNombre());
+                    txtPeso.setText(String.valueOf(animal.get(indice).getPeso()));
+                    txtAlimentacion.setText(animal.get(indice).getTipoAlimentacion());
+                    txtHistoria.setText(animal.get(indice).getHistoria());
                     Date date = new Date();
-                    date=ff.parse(Main.animal.get(indice).getFechaNacimiento());
+                    date = ff.parse(animal.get(indice).getFechaNacimiento());
                     jdFecha.setDate(date);
-                    cbApadrinado.setSelectedItem(Main.animal.get(indice).getApadrinado());
-                    cbSexo.setSelectedItem(Main.animal.get(indice).getGenero());
-                    cbEspecie.setSelectedItem(Main.animal.get(indice).getEspecie());
-                    cbEstadoSalud.setSelectedItem(Main.animal.get(indice).getEstadoSalud());      
+                    cbApadrinado.setSelectedItem(animal.get(indice).getApadrinado());
+                    cbSexo.setSelectedItem(animal.get(indice).getGenero());
+                    cbEspecie.setSelectedItem(animal.get(indice).getEspecie());
+                    cbEstadoSalud.setSelectedItem(animal.get(indice).getEstadoSalud());
                 } else {
                     throw new Exception("El animal buscado no existe.");
                 }

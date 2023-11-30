@@ -4,19 +4,30 @@
  */
 package Vista;
 
+import Clases.Empleado;
 import javax.swing.JOptionPane;
 import Clases.Main;
+import Modelo.DatosEmpleado;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
  * @author Ariana
  */
 public class EliminarEmpleado extends javax.swing.JFrame {
-   
-    
+
+    DatosEmpleado datos = new DatosEmpleado();
+    ArrayList<Empleado> empleados = new ArrayList<>();
+
     public EliminarEmpleado() {
         initComponents();
         setDefaultCloseOperation(Padrinos.HIDE_ON_CLOSE);
+        cargarDatos();
+    }
+
+    public void cargarDatos() {
+        empleados = datos.todosEmpleado();
     }
 
     /**
@@ -55,7 +66,7 @@ public class EliminarEmpleado extends javax.swing.JFrame {
         txtID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtID.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtID.setToolTipText("");
-        txtID.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ingrese el número de cédula", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtID.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ingrese el ID de empleado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
         txtID.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         txtID.setHighlighter(null);
         txtID.setName(""); // NOI18N
@@ -169,22 +180,22 @@ public class EliminarEmpleado extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         try {
+            cargarDatos();
             boolean existe = false;
             int indice = 0;
-            if (Main.animal.isEmpty()==true) {
-                JOptionPane.showMessageDialog(null, "No hay ningún animal registrado.");
+            if (empleados.isEmpty() == true) {
+                JOptionPane.showMessageDialog(null, "No hay ningún empleado registrado.");
             } else {
-                for (int i = 0; i < Main.padrinos.size(); i++) {
-                    if (txtID.getText().equals(Main.animal.get(i).getIdAnimal())) {
+                for (int i = 0; i < empleados.size(); i++) {
+                    if (txtID.getText().equals(empleados.get(i).getIdEmpleado())) {
                         existe = true;
                         indice = i;
                     }
                 }
                 if (existe == true) {
-                    txtNombre.setEnabled(true);
-                    txtNombre.setText(Main.animal.get(indice).getNombre());
+                    txtNombre.setText(empleados.get(indice).getNombre());
                 } else {
-                    throw new Exception("El padrino buscado no existe.");
+                    throw new Exception("El empleado buscado no existe.");
                 }
             }
         } catch (Exception e) {
@@ -193,20 +204,14 @@ public class EliminarEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        int indice=0;
-       int opcion= JOptionPane.showConfirmDialog(null, "Realmente desea eliminar el registro?","Confirmación", JOptionPane.YES_NO_CANCEL_OPTION);
-        if(JOptionPane.YES_OPTION==opcion){
-            for (int i = 0; i < Main.padrinos.size(); i++) {
-                if(txtID.getText().equals(Main.animal.get(i).getIdAnimal())){
-                    indice=i;
-                }
-            }
-            Main.padrinos.remove(indice);
+        int indice = 0;
+        int opcion = JOptionPane.showConfirmDialog(null, "Realmente desea eliminar el registro?", "Confirmación", JOptionPane.YES_NO_CANCEL_OPTION);
+        if (JOptionPane.YES_OPTION == opcion) {
+            datos.eliminar(txtID.getText());
             txtID.setText("");
             txtNombre.setText("");
-            JOptionPane.showMessageDialog(null, "Padrino eliminado con éxito.");
         }
-        
+
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**

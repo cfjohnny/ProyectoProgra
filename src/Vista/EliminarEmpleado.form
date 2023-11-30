@@ -147,7 +147,7 @@
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder position="2" title="Ingrese el n&#xfa;mero de c&#xe9;dula">
+                <TitledBorder position="2" title="Ingrese el ID de empleado">
                   <Font PropertyName="font" name="Segoe UI" size="14" style="1"/>
                 </TitledBorder>
               </Border>

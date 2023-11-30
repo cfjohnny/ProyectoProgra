@@ -6,6 +6,7 @@ package Clases;
 
 import java.util.ArrayList;
 import Clases.Empleado;
+import Modelo.DatosEmpleado;
 import Vista.*;
 
 /**
@@ -13,9 +14,10 @@ import Vista.*;
  * @author fallaa8
  */
 public class Main {
+
     public static final ArrayList<Animal> animal = new ArrayList<>();
     public static final ArrayList<Padrino> padrinos = new ArrayList<>();
-    public static final ArrayList<Empleado> empleados = new ArrayList<>();
+    public static ArrayList<Empleado> empleados = new ArrayList<>();
     public static String usuarioLogueado = "";
     public static InicioSesion iniciar = new InicioSesion();
     public static Animales animales = new Animales();
@@ -27,20 +29,17 @@ public class Main {
     public static RegistroEmpleado registroEmpleado = new RegistroEmpleado();
     public static RegistroPadrino registroPadrino = new RegistroPadrino();
     public static Empleados empleado = new Empleados();
-    public static ReportesPadrino reportesPadrinos = new ReportesPadrino();
+    public static ReportesPadrinos reportesPadrinos = new ReportesPadrinos();
     public static RegistroAnimales registroAnimales = new RegistroAnimales();
     public static ModificarEmpleado modificarEmpleado = new ModificarEmpleado();
     public static EliminarEmpleado eliminarEmpleado = new EliminarEmpleado();
     public static EliminarAnimal eliminarAnimal = new EliminarAnimal();
     public static ModificarAnimal modificarAnimal = new ModificarAnimal();
-    
-    public static int idAnimal=0;
-    
-    
-    
+    public static AnimalesDisponibles animalesDisponibles = new AnimalesDisponibles();
+//    public static DatosEmpleado datosEmpleado = new DatosEmpleado();
+
     public static void main(String[] args) {
-        Empleado empleado = new Empleado("Test", "2003/08/11", "123", "cr", "123", "mujer", "vet", 2300.0, "admin", "1234");
-    empleados.add(empleado);
+
         iniciar.setVisible(true);
         iniciar.setLocationRelativeTo(null);
 
