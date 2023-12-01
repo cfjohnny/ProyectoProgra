@@ -32,7 +32,7 @@ public class DatosAnimales {
             misql.setString(9, animal.getTipoAlimentacion());
             misql.setString(10, animal.getApadrinado());
             misql.setString(11, animal.getPadrino());
-    
+
             //3. ejecutar el comando sql
             misql.executeUpdate();
             //4.Cerrar la conexion
@@ -45,8 +45,8 @@ public class DatosAnimales {
         try {
             //1. Crear la conexion con la BD
             ConexionBD con = new ConexionBD();
-            PreparedStatement misql = con.crearPreparedStatement("UPDATE animal SET id='"+idAnimal+"',nombre='"+nombre+"',fechaNacimiento='"+fechaNacimiento+"',especie='"+especie+"',estadoSalud='"+estadoSalud+
-                    "',peso='"+String.valueOf(peso)+"',genero='"+genero+"',historia='"+historia+"',tipoAlimentacion='"+tipoAlimentacion+"',apadrinado='"+apadrinado+"' WHERE id=" + idAnimal);
+            PreparedStatement misql = con.crearPreparedStatement("UPDATE animal SET id='" + idAnimal + "',nombre='" + nombre + "',fechaNacimiento='" + fechaNacimiento + "',especie='" + especie + "',estadoSalud='" + estadoSalud
+                    + "',peso='" + String.valueOf(peso) + "',genero='" + genero + "',historia='" + historia + "',tipoAlimentacion='" + tipoAlimentacion + "',apadrinado='" + apadrinado + "' WHERE id=" + idAnimal);
             misql.executeUpdate();
         } catch (SQLException e) {
             Logger.getLogger(DatosAnimales.class.getName()).log(Level.SEVERE, null, e);
@@ -59,10 +59,10 @@ public class DatosAnimales {
             ConexionBD con = new ConexionBD();
             //2. Crear el statement
             Statement st = con.crearStatement();//crea el statement
-           String instruccion="DELETE FROM animal WHERE id=" + idAnimal; //de una vez ejecuta la secuencia
+            String instruccion = "DELETE FROM animal WHERE id=" + idAnimal; //de una vez ejecuta la secuencia
             //4.Cerrar la conexion
-            int filaEliminar=st.executeUpdate(instruccion);
-            if(filaEliminar>0){
+            int filaEliminar = st.executeUpdate(instruccion);
+            if (filaEliminar > 0) {
                 JOptionPane.showMessageDialog(null, "Animal eliminado con éxito");
             } else {
                 JOptionPane.showMessageDialog(null, "No se encontró el animal deseado");
@@ -83,7 +83,7 @@ public class DatosAnimales {
             ResultSet rs = st.executeQuery("SELECT * FROM animal"); //de una vez ejecuta la secuencia
             while (rs.next()) {
                 Animal animal = new Animal(rs.getInt("id"), rs.getString("nombre"), rs.getString("fechaNacimiento"), rs.getString("especie"),
-                         rs.getString("estadoSalud"), rs.getDouble("peso"), rs.getString("genero"), rs.getString("historia"),
+                        rs.getString("estadoSalud"), rs.getDouble("peso"), rs.getString("genero"), rs.getString("historia"),
                         rs.getString("tipoAlimentacion"), rs.getString("apadrinado"), rs.getString("padrino"));
                 animales.add(animal);
             }
@@ -108,7 +108,7 @@ public class DatosAnimales {
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Animal animal = new Animal(rs.getInt("id"), rs.getString("nombre"), rs.getString("fechaNacimiento"), rs.getString("especie"),
-                         rs.getString("estadoSalud"), rs.getDouble("peso"), rs.getString("genero"), rs.getString("historia"),
+                        rs.getString("estadoSalud"), rs.getDouble("peso"), rs.getString("genero"), rs.getString("historia"),
                         rs.getString("tipoAlimentacion"), rs.getString("apadrinado"), rs.getString("padrino"));
                 listaAnimales.add(animal);
             }
@@ -120,6 +120,30 @@ public class DatosAnimales {
         }
         return listaAnimales;
     }
-    
-    
+
+    public ArrayList<Animal> listaAnimalesPorEspecie(String especie) {
+        ArrayList<Animal> animales = new ArrayList<>();
+        try {
+            //1. Crear la conexion con la BD
+            ConexionBD con = new ConexionBD();
+            //2. Crear el statement
+             PreparedStatement st = con.crearPreparedStatement("SELECT * FROM animal WHERE especie like ?");
+            especie = '%' + especie + '%';
+            st.setString(1, especie);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Animal animal = new Animal(rs.getInt("id"), rs.getString("nombre"), rs.getString("fechaNacimiento"), rs.getString("especie"),
+                        rs.getString("estadoSalud"), rs.getDouble("peso"), rs.getString("genero"), rs.getString("historia"),
+                        rs.getString("tipoAlimentacion"), rs.getString("apadrinado"), rs.getString("padrino"));
+                animales.add(animal);
+            }
+            //4.Cerrar la conexion
+            rs.close();
+            con.cerrarConexion();
+        } catch (SQLException e) {
+            Logger.getLogger(DatosAnimales.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return animales;
+    }
+
 }

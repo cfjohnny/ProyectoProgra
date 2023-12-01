@@ -250,7 +250,9 @@ public class Animales extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnApadrinarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApadrinarActionPerformed
-        // TODO add your handling code here:
+        Main.animalesDisponibles.setVisible(true);
+        Main.animalesDisponibles.setLocationRelativeTo(null);
+        
     }//GEN-LAST:event_btnApadrinarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
