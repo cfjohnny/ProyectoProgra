@@ -8,7 +8,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import Clases.Main;
 
-
 /**
  *
  * @author fallaa8
@@ -219,16 +218,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
- 
+
     private void jBtnEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEmpleadoActionPerformed
+        Main.menu.setVisible(false);
         Main.empleado.setVisible(true);
         Main.empleado.setLocationRelativeTo(null);
     }//GEN-LAST:event_jBtnEmpleadoActionPerformed
 
     private void jBtnAnimalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAnimalesActionPerformed
+        Main.menu.setVisible(false);
         Main.animales.setVisible(true);
         Main.animales.setLocationRelativeTo(null);
-        Main.menu.setVisible(false);
     }//GEN-LAST:event_jBtnAnimalesActionPerformed
 
     private void jBtnPadrinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPadrinosActionPerformed
@@ -244,7 +244,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnCerrarSesion2ActionPerformed
 
     private void jtxtNombrePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jtxtNombrePropertyChange
-        jtxtNombre.setText("Usuario: "+Main.usuarioLogueado);
+        jtxtNombre.setText("Usuario: " + Main.usuarioLogueado);
     }//GEN-LAST:event_jtxtNombrePropertyChange
 
     /**

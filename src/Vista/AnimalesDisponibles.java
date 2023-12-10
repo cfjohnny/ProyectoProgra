@@ -4,6 +4,10 @@
  */
 package Vista;
 
+import Clases.Main;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 /**
  *
  * @author fallaa8
@@ -15,6 +19,13 @@ public class AnimalesDisponibles extends javax.swing.JFrame {
      */
     public AnimalesDisponibles() {
         initComponents();
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+
+                Main.animales.setVisible(true);
+            }
+        });
     }
 
     /**
@@ -181,50 +192,58 @@ public class AnimalesDisponibles extends javax.swing.JFrame {
 
     private void btnBurrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBurrosActionPerformed
         Burros burros = new Burros();
-       burros.setVisible(true);
-       burros.setLocationRelativeTo(null);
+        burros.setVisible(true);
+        burros.setLocationRelativeTo(null);
+        Main.animalesDisponibles.setVisible(false);
     }//GEN-LAST:event_btnBurrosActionPerformed
 
     private void btnVacasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVacasActionPerformed
-       Vacas vacas = new Vacas();
-       vacas.setVisible(true);
-       vacas.setLocationRelativeTo(null);
+        Vacas vacas = new Vacas();
+        vacas.setVisible(true);
+        vacas.setLocationRelativeTo(null);
+        Main.animalesDisponibles.setVisible(false);
     }//GEN-LAST:event_btnVacasActionPerformed
 
     private void btnCaballosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaballosActionPerformed
-       Caballos caballos = new Caballos();
-       caballos.setVisible(true);
-       caballos.setLocationRelativeTo(null);
+        Caballos caballos = new Caballos();
+        caballos.setVisible(true);
+        caballos.setLocationRelativeTo(null);
+        Main.animalesDisponibles.setVisible(false);
     }//GEN-LAST:event_btnCaballosActionPerformed
 
     private void btnAvesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvesActionPerformed
-       Aves aves = new Aves();
-       aves.setVisible(true);
-       aves.setLocationRelativeTo(null);
+        Aves aves = new Aves();
+        aves.setVisible(true);
+        aves.setLocationRelativeTo(null);
+        Main.animalesDisponibles.setVisible(false);
     }//GEN-LAST:event_btnAvesActionPerformed
 
     private void btnCerdosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerdosActionPerformed
-    Cerdos cerdos = new Cerdos();
-    cerdos.setVisible(true);
-    cerdos.setLocationRelativeTo(null);
+        Cerdos cerdos = new Cerdos();
+        cerdos.setVisible(true);
+        cerdos.setLocationRelativeTo(null);
+        Main.animalesDisponibles.setVisible(false);
     }//GEN-LAST:event_btnCerdosActionPerformed
 
     private void btnCabrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCabrasActionPerformed
-      Cabras cabras = new Cabras();
-      cabras.setVisible(true);
-      cabras.setLocationRelativeTo(null);
+        Cabras cabras = new Cabras();
+        cabras.setVisible(true);
+        cabras.setLocationRelativeTo(null);
+        Main.animalesDisponibles.setVisible(false);
     }//GEN-LAST:event_btnCabrasActionPerformed
 
     private void btnOvejasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOvejasActionPerformed
         Ovejas ovejas = new Ovejas();
         ovejas.setVisible(true);
         ovejas.setLocationRelativeTo(null);
+        Main.animalesDisponibles.setVisible(false);
     }//GEN-LAST:event_btnOvejasActionPerformed
 
     private void btnConejosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConejosActionPerformed
-       Conejos conejos = new Conejos();
-       conejos.setVisible(true);
-       conejos.setLocationRelativeTo(null);
+        Conejos conejos = new Conejos();
+        conejos.setVisible(true);
+        conejos.setLocationRelativeTo(null);
+        Main.animalesDisponibles.setVisible(false);
     }//GEN-LAST:event_btnConejosActionPerformed
 
     /**

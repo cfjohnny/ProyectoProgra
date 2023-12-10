@@ -5,6 +5,8 @@
 package Vista;
 
 import Clases.Main;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  *
@@ -17,7 +19,13 @@ public class Empleados extends javax.swing.JFrame {
      */
     public Empleados() {
         initComponents();
-        setDefaultCloseOperation(MenuPrincipal.HIDE_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+
+                Main.menu.setVisible(true);
+            }
+        });
     }
 
     /**
@@ -32,14 +40,14 @@ public class Empleados extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jBtnEliminarUsuario = new javax.swing.JButton();
         jtxtNombre = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
+        btnReportes = new javax.swing.JButton();
         jtxtNumUsuario = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jtxtCargo = new javax.swing.JLabel();
         jBtnCerrarSesion2 = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnRegistrar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
         jtxtCedula = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -75,19 +83,19 @@ public class Empleados extends javax.swing.JFrame {
         jtxtNombre.setPreferredSize(new java.awt.Dimension(150, 40));
         getContentPane().add(jtxtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
-        jButton8.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
-        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("REPORTES");
-        jButton8.setMaximumSize(new java.awt.Dimension(132, 32));
-        jButton8.setMinimumSize(new java.awt.Dimension(132, 32));
-        jButton8.setPreferredSize(new java.awt.Dimension(132, 32));
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btnReportes.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Blue"));
+        btnReportes.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnReportes.setForeground(new java.awt.Color(255, 255, 255));
+        btnReportes.setText("REPORTES");
+        btnReportes.setMaximumSize(new java.awt.Dimension(132, 32));
+        btnReportes.setMinimumSize(new java.awt.Dimension(132, 32));
+        btnReportes.setPreferredSize(new java.awt.Dimension(132, 32));
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btnReportesActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 560, 140, 40));
+        getContentPane().add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 560, 140, 40));
 
         jtxtNumUsuario.setBackground(new java.awt.Color(232, 232, 232));
         jtxtNumUsuario.setAlignmentX(0.6F);
@@ -134,28 +142,28 @@ public class Empleados extends javax.swing.JFrame {
         });
         getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 560, 140, 40));
 
-        jButton2.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Green"));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("REGISTRAR");
-        jButton2.setPreferredSize(new java.awt.Dimension(132, 32));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrar.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Green"));
+        btnRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrar.setText("REGISTRAR");
+        btnRegistrar.setPreferredSize(new java.awt.Dimension(132, 32));
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnRegistrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 140, 40));
+        getContentPane().add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 140, 40));
 
-        jButton4.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("MODIFICAR");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnModificar.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Yellow"));
+        btnModificar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
+        btnModificar.setText("MODIFICAR");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 300, 140, 40));
+        getContentPane().add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 300, 140, 40));
 
         jtxtCedula.setBackground(new java.awt.Color(232, 232, 232));
         jtxtCedula.setAlignmentX(0.6F);
@@ -221,11 +229,11 @@ public class Empleados extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnEliminarUsuarioActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-      ReportesEmpleado reportes = new ReportesEmpleado();
-      reportes.setVisible(true);
-      reportes.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jButton8ActionPerformed
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+        ReportesEmpleado reportes = new ReportesEmpleado();
+        reportes.setVisible(true);
+        reportes.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnReportesActionPerformed
 
     private void jBtnCerrarSesion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCerrarSesion2ActionPerformed
         Main.iniciar.setVisible(true);
@@ -234,19 +242,22 @@ public class Empleados extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnCerrarSesion2ActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-      Main.eliminarEmpleado.setVisible(true);
-      Main.eliminarEmpleado.setLocationRelativeTo(null);
+        Main.empleado.setVisible(false);
+        Main.eliminarEmpleado.setVisible(true);
+        Main.eliminarEmpleado.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        Main.empleado.setVisible(false);
         Main.registroEmpleado.setVisible(true);
         Main.registroEmpleado.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-      Main.modificarEmpleado.setVisible(true);
-      Main.modificarEmpleado.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        Main.empleado.setVisible(false);
+        Main.modificarEmpleado.setVisible(true);
+        Main.modificarEmpleado.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,11 +296,11 @@ public class Empleados extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnReportes;
     private javax.swing.JButton jBtnCerrarSesion2;
     private javax.swing.JButton jBtnEliminarUsuario;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;

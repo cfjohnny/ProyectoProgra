@@ -10,6 +10,8 @@ import Clases.Main;
 import Clases.Padrino;
 import Modelo.DatosEmpleado;
 import Modelo.DatosPadrinos;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,13 +27,19 @@ public class ReportesPadrinos extends javax.swing.JFrame {
     public ReportesPadrinos() {
         initComponents();
         cargarDatos();
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                txtBuscar.setText("");
+                Main.padrino.setVisible(true);
+            }
+        });
     }
 
     public void cargarDatos() {
         DefaultTableModel model = (DefaultTableModel) jtPadrinos.getModel();
         model.setNumRows(0);
         int posicion = 0;
-        String animales="";
+        String animales = "";
         DatosPadrinos datos = new DatosPadrinos();
         ArrayList<Padrino> padrinos = datos.todosPadrinos();
 
@@ -45,7 +53,7 @@ public class ReportesPadrinos extends javax.swing.JFrame {
         ArrayList<Animal> animalesApadrinados = datos.BuscarAnimales(txtBuscar.getText());
         for (int j = 0; j < animalesApadrinados.size(); j++) {
             if (txtBuscar.getText().equals(animalesApadrinados.get(j).getPadrino())) {
-               animales+="("+animalesApadrinados.get(j).getIdAnimal() + "-" + animalesApadrinados.get(j).getNombre()+"\n)";
+                animales += "(" + animalesApadrinados.get(j).getIdAnimal() + "-" + animalesApadrinados.get(j).getNombre() + "\n)";
             }
         }
         for (Padrino padrino : padrinos) {
@@ -58,7 +66,7 @@ public class ReportesPadrinos extends javax.swing.JFrame {
             lista[6] = padrinos.get(i).getMetodoPago();
             lista[7] = String.valueOf(padrinos.get(i).getMontoDonado());
             lista[8] = padrinos.get(i).getOcupacion();
-            lista[9] =animales;
+            lista[9] = animales;
             i++;
             model.addRow(lista);
         }

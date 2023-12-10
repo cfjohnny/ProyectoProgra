@@ -9,6 +9,8 @@ import Clases.Empleado;
 import Clases.Main;
 import Clases.Padrino;
 import Modelo.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,7 +31,13 @@ public class Conejos extends javax.swing.JFrame {
     public Conejos() {
         initComponents();
         cargarDatos();
+         this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
 
+                Main.animalesDisponibles.setVisible(true);
+            }
+        });
     }
 
     public void cargarDatosPadrinos() {

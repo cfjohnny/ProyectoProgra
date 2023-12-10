@@ -12,6 +12,10 @@ import javax.swing.JOptionPane;
 import Clases.Main;
 import Clases.Padrino;
 import Modelo.DatosEmpleado;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 
 /**
@@ -28,12 +32,17 @@ public class ModificarEmpleado extends javax.swing.JFrame {
 
     public ModificarEmpleado() {
         initComponents();
-        setDefaultCloseOperation(Padrinos.HIDE_ON_CLOSE);
         cargarDatos();
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                Main.empleado.setVisible(true);
+            }
+        });
     }
 
     public void cargarDatos() {
-        empleados=datos.todosEmpleado();
+        empleados = datos.todosEmpleado();
     }
 
     private void habilitar(boolean si) {
@@ -62,13 +71,20 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         boolean lleno = false;
         if (txtNombre.getText().isEmpty() || txtID.getText().isEmpty() || txtTelefono1.getText().isEmpty()
                 || txtDireccion.getText().isEmpty() || txtCargo.getText().isEmpty() || txtSalario.getText().isEmpty()
-                || txtID.getText().isEmpty() || cbSexo.getSelectedIndex()==0 || txtCedula.getText().isEmpty()
+                || txtID.getText().isEmpty() || cbSexo.getSelectedIndex() == 0 || txtCedula.getText().isEmpty()
                 || "2023-11-11".equals(ff.format(jdFecha.getDate().getTime()))) {
             lleno = false;
         } else {
             lleno = true;
         }
         return lleno;
+    }
+
+    public int validarFecha() {
+        String fechaSeleccionada = ff.format(jdFecha.getDate().getTime());
+        LocalDate fecha = LocalDate.parse(fechaSeleccionada);
+        Period edad = Period.between(fecha, LocalDate.now());
+        return edad.getYears();
     }
 
     /**
@@ -386,9 +402,13 @@ public class ModificarEmpleado extends javax.swing.JFrame {
                 }
             }
             if (vacio() == true) {
-                datos.modificar(empleados.get(indice).getIdEmpleado(),
-                        txtNombre.getText(), ff.format(jdFecha.getDate().getTime()), txtID.getText(), txtDireccion.getText() 
-                        , txtTelefono1.getText(), cbSexo.getSelectedItem().toString(), txtCargo.getText(), 
+
+                if (validarFecha() < 18) {
+                    throw new Exception("El padrino debe ser mayor de edad.");
+                }
+                datos.modificar(txtID.getText(),
+                        txtNombre.getText(), ff.format(jdFecha.getDate().getTime()), txtID.getText(), txtDireccion.getText(),
+                         txtTelefono1.getText(), cbSexo.getSelectedItem().toString(), txtCargo.getText(),
                         Double.parseDouble(txtSalario.getText()), empleados.get(indice).getContrasena());
                 JOptionPane.showMessageDialog(null, "El(la) padrino/madrina ha sido modificado satisfactoriamente");
                 JOptionPane.showMessageDialog(null, Main.padrinos.toString());
@@ -410,7 +430,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDireccionActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-                try {
+        try {
             cargarDatos();
             boolean existe = false;
             int indice = 0;

@@ -14,6 +14,10 @@ import javax.swing.JOptionPane;
 import Clases.Empleado;
 import Clases.Main;
 import Modelo.DatosEmpleado;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.time.LocalDate;
+import java.time.Period;
 
 /**
  *
@@ -26,6 +30,8 @@ public class RegistroEmpleado extends javax.swing.JFrame {
     DatosEmpleado datos = new DatosEmpleado();
     ArrayList<Empleado> empleados = new ArrayList<>();
 
+    SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
+
     /**
      * Creates new form RegistroEmpleado
      */
@@ -33,8 +39,13 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         initComponents();
         fecha.set(2023, Calendar.NOVEMBER, 11);
         jdFecha.setDate(fecha.getTime());
-        setDefaultCloseOperation(RegistroEmpleado.HIDE_ON_CLOSE);
         cargarDatos();
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                Main.empleado.setVisible(true);
+            }
+        });
     }
 
     /**
@@ -611,9 +622,14 @@ public class RegistroEmpleado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void cargarDatos() {
-
         empleados = datos.todosEmpleado();
+    }
 
+    public int validarFecha() {
+        String fechaSeleccionada = ff.format(jdFecha.getDate().getTime());
+        LocalDate fecha = LocalDate.parse(fechaSeleccionada);
+        Period edad = Period.between(fecha, LocalDate.now());
+        return edad.getYears();
     }
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
 
@@ -662,7 +678,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
                 presionadoGenerar = false;
                 throw new Exception("Los datos no pueden ser generados. \nFavor ingresar el número de cédula.");
             } else {
-                int numeroAleatorio=(int) (Math.random()*900)+100;
+                int numeroAleatorio = (int) (Math.random() * 900) + 100;
                 presionadoGenerar = true;
                 txtNumEmpleado.setText("11" + String.valueOf(numeroAleatorio));
                 txtContrasena.setText("LA" + txtNumEmpleado.getText());
@@ -678,12 +694,11 @@ public class RegistroEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_jdFechaPropertyChange
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-
-        SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
         Date fecha = jdFecha.getDate();
+
         try {
             cargarDatos();
-            if ((txtCargo.getText().isEmpty() || txtCedula.getText().isEmpty() || "2023-11-11".equals(ff.format(jdFecha.getDate().getTime())) || txtNombre.getText().isEmpty()
+            if ((txtCargo.getText().isEmpty() || txtCedula.getText().isEmpty() || txtNombre.getText().isEmpty()
                     || txtTelefono.getText().isEmpty() || txtDireccion.getText().isEmpty() || txtSalario.getText().isEmpty()) || cbSexo.getSelectedIndex() == 0) {
                 if (txtCargo.getText().isEmpty()) {
                     lbCargo.setForeground(Color.red);
@@ -715,16 +730,14 @@ public class RegistroEmpleado extends javax.swing.JFrame {
                 } else {
                     lbNumTelefono.setForeground(Color.white);
                 }
-                if ("11/11/2023".equals(ff.format(jdFecha.getDate().getTime()))) {
-                    lbFecha.setForeground(Color.red);
-                } else {
-                    lbFecha.setForeground(Color.white);
-                }
-                lbFecha.setForeground(Color.white);
+
                 throw new Exception("Se deben completar todos los campos.");
             } else if (presionadoGenerar == false) {
                 throw new Exception("Se debe generar el número de empleado y contraseña antes de continuar.");
             } else {
+                if (validarFecha() < 18) {
+                    throw new Exception("El padrino debe ser mayor de edad.");
+                }
                 Empleado empleado = new Empleado(txtNombre.getText(), ff.format(jdFecha.getDate().getTime()), txtCedula.getText(), txtDireccion.getText(), txtTelefono.getText(), cbSexo.getSelectedItem().toString(), txtCargo.getText(), Double.valueOf(txtSalario.getText()),
                         txtNumEmpleado.getText(), txtContrasena.getText());
                 boolean existe = false;

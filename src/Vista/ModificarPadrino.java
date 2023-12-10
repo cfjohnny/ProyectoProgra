@@ -11,6 +11,13 @@ import javax.swing.JOptionPane;
 import Clases.*;
 import Clases.Padrino;
 import Modelo.DatosPadrinos;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
 import java.util.ArrayList;
 
 /**
@@ -27,14 +34,23 @@ public class ModificarPadrino extends javax.swing.JFrame {
 
     public ModificarPadrino() {
         initComponents();
-        setDefaultCloseOperation(Padrinos.HIDE_ON_CLOSE);
         cargarDatos();
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                habilitar(false);
+                txtCedula.setText("");
+                clear();
+                Main.padrino.setVisible(true);
+            }
+        });
+
     }
 
-    public void cargarDatos(){
+    public void cargarDatos() {
         padrinos = datos.todosPadrinos();
     }
-    private void habilitar(boolean si) {
+
+    public void habilitar(boolean si) {
         txtNombre.setEnabled(si);
         txtDireccion.setEnabled(si);
         txtMontoDonar.setEnabled(si);
@@ -47,17 +63,24 @@ public class ModificarPadrino extends javax.swing.JFrame {
         rbTarjeta.setEnabled(si);
     }
 
-    private void clear() {
+    public int validarFecha() {
+        String fechaSeleccionada = ff.format(jdFecha.getDate().getTime());
+        LocalDate fecha = LocalDate.parse(fechaSeleccionada);
+        Period edad = Period.between(fecha, LocalDate.now());
+        return edad.getYears();
+    }
+
+    public void clear() {
         txtNombre.setText("");
         txtDireccion.setText("");
         txtMontoDonar.setText("");
         txtOcupacion.setText("");
         txtTelefono1.setText("");
         cbSexo.setSelectedIndex(0);
-        rbEfectivo.setText("");
-        rbSINPE.setText("");
+        rbEfectivo.setSelected(false);
+        rbSINPE.setSelected(false);
         jdFecha.setDate(fecha.getTime());
-        rbTarjeta.setText("");
+        rbTarjeta.setSelected(false);
     }
 
     public boolean vacio() {
@@ -444,6 +467,7 @@ public class ModificarPadrino extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTelefono1ActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+
         try {
             String metodo = "";
             boolean habilitado = false;
@@ -461,6 +485,9 @@ public class ModificarPadrino extends javax.swing.JFrame {
                 } else if (rbTarjeta.isSelected() == true) {
                     metodo = rbTarjeta.getText();
                 }
+                if (validarFecha() < 18) {
+                    throw new Exception("El padrino debe ser mayor de edad.");
+                }
                 datos.modificar(txtNombre.getText(), ff.format(jdFecha.getDate().getTime()),
                         txtCedula.getText(), txtDireccion.getText(), txtTelefono1.getText(), cbSexo.getSelectedItem().toString(),
                         metodo, Double.parseDouble(txtMontoDonar.getText()), txtOcupacion.getText());
@@ -471,6 +498,7 @@ public class ModificarPadrino extends javax.swing.JFrame {
             } else {
                 throw new Exception("ATENCIÓN. Todos los campos deben ser completados");
             }
+
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Lo sentimos, el monto a donar debe ser un dato numérico");
         } catch (Exception e) {
@@ -504,8 +532,8 @@ public class ModificarPadrino extends javax.swing.JFrame {
                     Date date = ff.parse(padrinos.get(indice).getFechaNacimiento());
                     jdFecha.setDate(date);
                     cbSexo.setSelectedItem(padrinos.get(indice).getSexo());
-                    txtMontoDonar.setText(String.valueOf(padrinos.get(indice).getMetodoPago()));
-                    if (rbEfectivo.getText().toString().equals(padrinos.get(indice).getMontoDonado())) {
+                    txtMontoDonar.setText(String.valueOf(padrinos.get(indice).getMontoDonado()));
+                    if (rbEfectivo.getText().toString().equals(padrinos.get(indice).getMetodoPago())) {
                         rbEfectivo.setSelected(true);
                     } else if (rbSINPE.getText().toString().equals(padrinos.get(indice).getMetodoPago())) {
                         rbSINPE.setSelected(true);

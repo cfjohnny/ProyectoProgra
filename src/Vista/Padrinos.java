@@ -5,6 +5,8 @@
 package Vista;
 
 import Clases.Main;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  *
@@ -17,7 +19,14 @@ public class Padrinos extends javax.swing.JFrame {
      */
     public Padrinos() {
         initComponents();
-        setDefaultCloseOperation(MenuPrincipal.HIDE_ON_CLOSE);
+        
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+
+                Main.menu.setVisible(true);
+            }
+        });
     }
 
     /**
@@ -204,22 +213,26 @@ public class Padrinos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtRegistrarActionPerformed
+        Main.padrino.setVisible(false);
         Main.registroPadrino.setVisible(true);
         Main.registroPadrino.setLocationRelativeTo(null);
     }//GEN-LAST:event_jbtRegistrarActionPerformed
 
     private void jbtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarActionPerformed
+         Main.padrino.setVisible(false);
         Main.modificarPadrino.setVisible(true);
         Main.modificarPadrino.setLocationRelativeTo(null);
     }//GEN-LAST:event_jbtModificarActionPerformed
 
     private void jbtEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtEliminarActionPerformed
-       Main.eliminarPadrino.setVisible(true);
+        Main.padrino.setVisible(false);
+        Main.eliminarPadrino.setVisible(true);
        Main.eliminarPadrino.setLocationRelativeTo(null);
     }//GEN-LAST:event_jbtEliminarActionPerformed
 
     private void jbtReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtReportesActionPerformed
-      Main.reportesPadrinos.setVisible(true);
+       Main.padrino.setVisible(false);
+        Main.reportesPadrinos.setVisible(true);
       Main.reportesPadrinos.setLocationRelativeTo(null);
     }//GEN-LAST:event_jbtReportesActionPerformed
 

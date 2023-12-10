@@ -8,6 +8,8 @@ import Clases.Empleado;
 import javax.swing.JOptionPane;
 import Clases.Main;
 import Modelo.DatosEmpleado;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -22,8 +24,12 @@ public class EliminarEmpleado extends javax.swing.JFrame {
 
     public EliminarEmpleado() {
         initComponents();
-        setDefaultCloseOperation(Padrinos.HIDE_ON_CLOSE);
         cargarDatos();
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                Main.empleado.setVisible(true);
+            }
+        });
     }
 
     public void cargarDatos() {

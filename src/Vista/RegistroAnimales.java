@@ -9,6 +9,10 @@ import java.util.Calendar;
 import javax.swing.JOptionPane;
 import Clases.*;
 import Modelo.DatosAnimales;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.*;
 
 /**
@@ -16,7 +20,7 @@ import java.util.*;
  * @author Ariana
  */
 public class RegistroAnimales extends javax.swing.JFrame {
-
+  int dias;
     Calendar fecha = Calendar.getInstance();
     SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
     DatosAnimales datos = new DatosAnimales();
@@ -26,9 +30,22 @@ public class RegistroAnimales extends javax.swing.JFrame {
         initComponents();
         fecha.set(2023, Calendar.NOVEMBER, 11);
         jdFecha.setDate(fecha.getTime());
-        setDefaultCloseOperation(RegistroAnimales.HIDE_ON_CLOSE);
         cargarDatos();
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
 
+                Main.animales.setVisible(true);
+            }
+        });
+    }
+
+    public int validarFecha() {
+        String fechaSeleccionada = ff.format(jdFecha.getDate().getTime());
+        LocalDate fecha = LocalDate.parse(fechaSeleccionada);
+         Period edad = Period.between(fecha, LocalDate.now());
+        dias= edad.getDays();
+        return dias;
     }
 
     public void cargarDatos() {
@@ -146,9 +163,11 @@ public class RegistroAnimales extends javax.swing.JFrame {
         cbEstadoSalud.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Estado de salud", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
         jPanel2.add(cbEstadoSalud, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 410, 50));
 
+        cbApadrinado.setEditable(true);
         cbApadrinado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbApadrinado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "Apadrinado", "No apadrinado" }));
+        cbApadrinado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No apadrinado" }));
         cbApadrinado.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Estado de apadrinamiento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        cbApadrinado.setEnabled(false);
         cbApadrinado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbApadrinadoActionPerformed(evt);
@@ -175,6 +194,11 @@ public class RegistroAnimales extends javax.swing.JFrame {
                 txtPadrinoActionPerformed(evt);
             }
         });
+        txtPadrino.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                txtPadrinoPropertyChange(evt);
+            }
+        });
         jPanel2.add(txtPadrino, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 410, -1));
 
         txtAlimentacion1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -194,7 +218,7 @@ private boolean vacio() {
         boolean lleno;
         if (txtNombre.getText().isEmpty() || txtHistoria.getText().isEmpty()
                 || txtPadrino.getText().isEmpty() || txtHistoria.getText().isEmpty() || txtPeso.getText().isEmpty()
-                || cbApadrinado.getSelectedIndex() == 0 || cbEspecie.getSelectedIndex() == 0 || cbEstadoSalud.getSelectedIndex() == 0 || cbSexo.getSelectedIndex() == 0
+                || cbEspecie.getSelectedIndex() == 0 || cbEstadoSalud.getSelectedIndex() == 0 || cbSexo.getSelectedIndex() == 0
                 || "2023-11-11".equals(ff.format(jdFecha.getDate().getTime()))) {
             lleno = false;
         } else {
@@ -229,6 +253,7 @@ private boolean vacio() {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         try {
+            dias = validarFecha();
             cargarDatos();
             String metodo = "";
             boolean existe = false;
@@ -243,9 +268,11 @@ private boolean vacio() {
 //                    }
 //                }
                 if (existe == false) {
+                    if (dias < 0) {
+                        throw new Exception("La fecha de nacimiento seleccionada no es válida");
+                    }
                     datos.insertar(animal);
                     JOptionPane.showMessageDialog(null, "Animal registrado correctamente");
-                    JOptionPane.showMessageDialog(null, Main.padrinos.toString());
                     clear();
                     int opcion = JOptionPane.showConfirmDialog(null, "Desea registrar otro animal?", "Confirmar registro", JOptionPane.YES_NO_OPTION);
                     if (opcion == JOptionPane.NO_OPTION) {
@@ -285,16 +312,16 @@ private boolean vacio() {
     }//GEN-LAST:event_txtAlimentacion1ActionPerformed
 
     private void cbApadrinadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbApadrinadoActionPerformed
-        if (cbApadrinado.getSelectedIndex() == 1) {
-            txtPadrino.setEditable(true);
-        } else {
-            txtPadrino.setEditable(false);
-        }
+
     }//GEN-LAST:event_cbApadrinadoActionPerformed
 
     private void cbEspecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEspecieActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbEspecieActionPerformed
+
+    private void txtPadrinoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtPadrinoPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPadrinoPropertyChange
 
     /**
      * @param args the command line arguments

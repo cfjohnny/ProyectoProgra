@@ -19,8 +19,14 @@ public class Animales extends javax.swing.JFrame {
      */
     public Animales() {
         initComponents();
-        setDefaultCloseOperation(MenuPrincipal.HIDE_ON_CLOSE);
 
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+
+                Main.menu.setVisible(true);
+            }
+        });
     }
 
     public void VentanaPrincipal() {
@@ -245,25 +251,29 @@ public class Animales extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-       Main.registroAnimales.setVisible(true);
-       Main.registroAnimales.setLocationRelativeTo(null);
+        Main.animales.setVisible(false);
+        Main.registroAnimales.setVisible(true);
+        Main.registroAnimales.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnApadrinarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApadrinarActionPerformed
+        Main.animales.setVisible(false);
         Main.animalesDisponibles.setVisible(true);
         Main.animalesDisponibles.setLocationRelativeTo(null);
-        
+
     }//GEN-LAST:event_btnApadrinarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        Main.animales.setVisible(false);
         Main.eliminarAnimal.setVisible(true);
         Main.eliminarAnimal.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
-      ReportesAnimales reportes = new ReportesAnimales();
-      reportes.setVisible(true);
-      reportes.setLocationRelativeTo(null);
+        Main.animales.setVisible(false);
+        ReportesAnimales reportes = new ReportesAnimales();
+        reportes.setVisible(true);
+        reportes.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnReportesActionPerformed
 
     private void jBtnEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEliminarUsuarioActionPerformed
@@ -280,7 +290,7 @@ public class Animales extends javax.swing.JFrame {
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void jtxtNombrePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jtxtNombrePropertyChange
-  jtxtNombre.setText("Usuario: "+Main.usuarioLogueado);        // TODO add your handling code here:
+        jtxtNombre.setText("Usuario: " + Main.usuarioLogueado);        // TODO add your handling code here:
     }//GEN-LAST:event_jtxtNombrePropertyChange
 
     /**

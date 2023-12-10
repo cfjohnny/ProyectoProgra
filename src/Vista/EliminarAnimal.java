@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
 import Clases.Main;
 import Modelo.DatosAnimales;
 import Modelo.DatosEmpleado;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 /**
@@ -24,8 +26,14 @@ public class EliminarAnimal extends javax.swing.JFrame {
 
     public EliminarAnimal() {
         initComponents();
-        setDefaultCloseOperation(Animales.HIDE_ON_CLOSE);
         cargarDatos();
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+
+                Main.animales.setVisible(true);
+            }
+        });
     }
 
     

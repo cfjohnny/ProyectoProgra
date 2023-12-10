@@ -9,6 +9,8 @@ import Clases.Empleado;
 import Clases.Main;
 import Clases.Padrino;
 import Modelo.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,6 +31,12 @@ public class Burros extends javax.swing.JFrame {
     public Burros() {
         initComponents();
         cargarDatos();
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                Main.animalesDisponibles.setVisible(true);
+            }
+        });
 
     }
 
@@ -549,15 +557,15 @@ public class Burros extends javax.swing.JFrame {
 
     private void btnApadrinarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApadrinarActionPerformed
 
-    datosAnimales.modificarApadrinado(Integer.parseInt(txtID.getText()), "Apadrinado", txtCedula.getText());
-    JOptionPane.showMessageDialog(null, "Felicitaciones, has apadrinado un animal :)");
-    txtID.setText(null);
-    txtNombre.setText(null);
-    txtFecha.setText(null);
-    txtGenero.setText(null);
-    txtCedula.setText(null);
-    txtNombrePadrino.setText(null);
-    txtMontoDonar.setText(null);
+        datosAnimales.modificarApadrinado(Integer.parseInt(txtID.getText()), "Apadrinado", txtCedula.getText());
+        JOptionPane.showMessageDialog(null, "Felicitaciones, has apadrinado un animal :)");
+        txtID.setText(null);
+        txtNombre.setText(null);
+        txtFecha.setText(null);
+        txtGenero.setText(null);
+        txtCedula.setText(null);
+        txtNombrePadrino.setText(null);
+        txtMontoDonar.setText(null);
     }//GEN-LAST:event_btnApadrinarActionPerformed
 
     /**

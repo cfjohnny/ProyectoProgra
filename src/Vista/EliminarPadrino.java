@@ -7,6 +7,8 @@ package Vista;
 import javax.swing.JOptionPane;
 import Clases.*;
 import Modelo.DatosPadrinos;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 /**
@@ -21,8 +23,15 @@ public class EliminarPadrino extends javax.swing.JFrame {
 
     public EliminarPadrino() {
         initComponents();
-        setDefaultCloseOperation(Padrinos.HIDE_ON_CLOSE);
         cargarDatos();
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                txtCedula.setText("");
+                txtNombre.setText("");
+                txtNombre.setEnabled(false);
+                Main.padrino.setVisible(true);
+            }
+        });
     }
 
     public void cargarDatos() {

@@ -13,6 +13,10 @@ import Clases.Empleado;
 import Clases.Main;
 import Clases.Padrino;
 import Modelo.DatosAnimales;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 
 /**
@@ -20,7 +24,7 @@ import java.util.ArrayList;
  * @author Ariana
  */
 public class ModificarAnimal extends javax.swing.JFrame {
-
+    int dias;
     RegistroPadrino padrino = new RegistroPadrino();
     Calendar fecha = Calendar.getInstance();
     SimpleDateFormat ff = new SimpleDateFormat("yyyy-MM-dd");
@@ -29,12 +33,25 @@ public class ModificarAnimal extends javax.swing.JFrame {
 
     public ModificarAnimal() {
         initComponents();
-        setDefaultCloseOperation(Padrinos.HIDE_ON_CLOSE);
         cargarDatos();
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+
+                Main.animales.setVisible(true);
+            }
+        });
     }
 
     public void cargarDatos() {
         animal = datos.todosAnimales();
+    }
+    public int validarFecha() {
+        String fechaSeleccionada = ff.format(jdFecha.getDate().getTime());
+        LocalDate fecha = LocalDate.parse(fechaSeleccionada);
+         Period edad = Period.between(fecha, LocalDate.now());
+        dias= edad.getDays();
+        return dias;
     }
 
     private void clear() {
@@ -42,7 +59,6 @@ public class ModificarAnimal extends javax.swing.JFrame {
         txtNombre.setText("");
         txtPadrino.setText("");
         txtHistoria.setText("");
-        txtPeso.setText("");
         txtPeso.setText("");
         cbSexo.setSelectedIndex(0);
         cbApadrinado.setSelectedIndex(0);
@@ -56,7 +72,6 @@ public class ModificarAnimal extends javax.swing.JFrame {
         txtNombre.setEnabled(si);
         txtPadrino.setEnabled(si);
         txtHistoria.setEnabled(si);
-        txtPeso.setEnabled(si);
         txtPeso.setEnabled(si);
         cbSexo.setEnabled(si);
         cbApadrinado.setEnabled(si);
@@ -299,6 +314,7 @@ public class ModificarAnimal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        dias=validarFecha();
         try {
             cargarDatos();
             String metodo = "";
@@ -310,6 +326,9 @@ public class ModificarAnimal extends javax.swing.JFrame {
                 }
             }
             if (vacio() == true) {
+                if(dias<0){
+                    throw new Exception("La fecha de nacimiento seleccionada no es válida");
+                }
                 datos.modificar(Integer.parseInt(txtID.getText()), txtNombre.getText(), ff.format(jdFecha.getDate().getTime()),
                         cbEspecie.getSelectedItem().toString(), cbEstadoSalud.getSelectedItem().toString(),
                         Double.parseDouble(txtPeso.getText()), cbSexo.getSelectedItem().toString(), txtHistoria.getText(),
@@ -322,8 +341,6 @@ public class ModificarAnimal extends javax.swing.JFrame {
             } else {
                 throw new Exception("ATENCIÓN. Todos los campos deben ser completados");
             }
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Lo sentimos, el monto a donar debe ser un dato numérico");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }

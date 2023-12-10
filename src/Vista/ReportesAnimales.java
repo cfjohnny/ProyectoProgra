@@ -9,6 +9,8 @@ import Clases.Empleado;
 import Clases.Main;
 import Modelo.DatosAnimales;
 import Modelo.DatosEmpleado;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,6 +26,12 @@ public class ReportesAnimales extends javax.swing.JFrame {
     public ReportesAnimales() {
         initComponents();
         cargarDatos();
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                Main.animales.setVisible(true);
+            }
+        });
     }
 
     public void cargarDatos() {
@@ -34,13 +42,13 @@ public class ReportesAnimales extends javax.swing.JFrame {
         ArrayList<Animal> animales = datos.todosAnimales();
 
         if (txtBuscar.getText().contentEquals("")) {
-            animales= datos.todosAnimales();
+            animales = datos.todosAnimales();
         } else {
-            animales= datos.BuscarAnimal(txtBuscar.getText()); //busca los articulos por descripcion
+            animales = datos.BuscarAnimal(txtBuscar.getText()); //busca los articulos por descripcion
         }
         String lista[] = new String[11]; //siempre hacer 
         int i = 0;
-        for (Animal animal :animales) {
+        for (Animal animal : animales) {
             lista[0] = String.valueOf(animales.get(i).getIdAnimal());
             lista[1] = animales.get(i).getNombre();
             lista[2] = animales.get(i).getFechaNacimiento();
@@ -164,7 +172,7 @@ public class ReportesAnimales extends javax.swing.JFrame {
         jbtModificar.setBackground(new java.awt.Color(204, 153, 0));
         jbtModificar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jbtModificar.setForeground(new java.awt.Color(255, 255, 255));
-        jbtModificar.setText("MODIFICAR");
+        jbtModificar.setText("BUSCAR");
         jbtModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtModificarActionPerformed(evt);

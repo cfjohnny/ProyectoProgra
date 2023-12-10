@@ -7,6 +7,8 @@ package Vista;
 import Clases.Empleado;
 import Clases.Main;
 import Modelo.DatosEmpleado;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,6 +24,12 @@ public class ReportesEmpleado extends javax.swing.JFrame {
     public ReportesEmpleado() {
         initComponents();
         cargarDatos();
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                Main.empleado.setVisible(true);
+            }
+        });
     }
 
     public void cargarDatos() {

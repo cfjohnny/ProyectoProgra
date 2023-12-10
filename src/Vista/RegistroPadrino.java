@@ -11,6 +11,11 @@ import javax.swing.JOptionPane;
 import Clases.Main;
 import Clases.Padrino;
 import Modelo.DatosPadrinos;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 
 /**
  *
@@ -29,7 +34,13 @@ public class RegistroPadrino extends javax.swing.JFrame {
         initComponents();
         fecha.set(2023, Calendar.NOVEMBER, 11);
         jdFecha.setDate(fecha.getTime());
-        setDefaultCloseOperation(Padrinos.HIDE_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                txtCedula.setText("");
+                clear();
+                Main.padrino.setVisible(true);
+            }
+        });
     }
 
     public void cargarDatos() {
@@ -61,6 +72,13 @@ public class RegistroPadrino extends javax.swing.JFrame {
         rbSINPE.setSelected(false);
         rbTarjeta.setSelected(false);
         jdFecha.setDate(fecha.getTime());
+    }
+
+    public int validarFecha() {
+        String fechaSeleccionada = ff.format(jdFecha.getDate().getTime());
+        LocalDate fecha = LocalDate.parse(fechaSeleccionada);
+        Period edad = Period.between(fecha, LocalDate.now());
+        return edad.getYears();
     }
 
     @SuppressWarnings("unchecked")
@@ -287,6 +305,7 @@ public class RegistroPadrino extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCedulaActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+
         try {
             cargarDatos();
             String metodo = "";
@@ -308,6 +327,10 @@ public class RegistroPadrino extends javax.swing.JFrame {
                     }
                 }
                 if (existe == false) {
+
+                    if (validarFecha() < 18) {
+                        throw new Exception("El padrino debe ser mayor de edad.");
+                    }
                     datos.insertar(padrino);
                     JOptionPane.showMessageDialog(null, "El(la) padrino/madrina ha sido registrado(a) satisfactoriamente");
                     clear();
@@ -317,7 +340,7 @@ public class RegistroPadrino extends javax.swing.JFrame {
                         Main.padrino.setVisible(true);
                     }
                 } else {
-                    throw new Exception("Lo sentimos, el(la) padrino/madrina ha sido registrado(a).");
+                    throw new Exception("Lo sentimos, el(la) padrino/madrina ya ha sido registrado(a).");
                 }
 
             } else {
