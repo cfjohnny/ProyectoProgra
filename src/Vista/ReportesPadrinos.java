@@ -45,7 +45,7 @@ public class ReportesPadrinos extends javax.swing.JFrame {
         ArrayList<Animal> animalesApadrinados = datos.BuscarAnimales(txtBuscar.getText());
         for (int j = 0; j < animalesApadrinados.size(); j++) {
             if (txtBuscar.getText().equals(animalesApadrinados.get(j).getPadrino())) {
-               animales+=animalesApadrinados.get(i).getIdAnimal() + "/" + animalesApadrinados.get(i).getNombre();
+               animales+="("+animalesApadrinados.get(j).getIdAnimal() + "-" + animalesApadrinados.get(j).getNombre()+"\n)";
             }
         }
         for (Padrino padrino : padrinos) {
@@ -81,7 +81,6 @@ public class ReportesPadrinos extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jtxtNombre = new javax.swing.JLabel();
         jtxtNumUsuario = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jtxtCargo = new javax.swing.JLabel();
         jBtnCerrarSesion2 = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
@@ -109,7 +108,7 @@ public class ReportesPadrinos extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, true
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -124,9 +123,10 @@ public class ReportesPadrinos extends javax.swing.JFrame {
         txtBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         getContentPane().add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 380, 50));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vaquero.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo.png"))); // NOI18N
+        jLabel2.setToolTipText("");
         jLabel2.setAlignmentX(0.6F);
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 60, 70));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 240, 170));
 
         jtxtNombre.setBackground(new java.awt.Color(232, 232, 232));
         jtxtNombre.setAlignmentX(0.6F);
@@ -143,12 +143,6 @@ public class ReportesPadrinos extends javax.swing.JFrame {
         jtxtNumUsuario.setOpaque(true);
         jtxtNumUsuario.setPreferredSize(new java.awt.Dimension(150, 40));
         getContentPane().add(jtxtNumUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, -1, -1));
-
-        jLabel10.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel10.setText("LIBRES Y AMADOS");
-        jLabel10.setAlignmentX(0.6F);
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 220, -1));
 
         jtxtCargo.setBackground(new java.awt.Color(232, 232, 232));
         jtxtCargo.setAlignmentX(0.6F);
@@ -187,7 +181,7 @@ public class ReportesPadrinos extends javax.swing.JFrame {
         jtxtCedula.setPreferredSize(new java.awt.Dimension(150, 40));
         getContentPane().add(jtxtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
 
-        jLabel5.setBackground(new java.awt.Color(0, 51, 102));
+        jLabel5.setBackground(new java.awt.Color(89, 86, 45));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -252,7 +246,6 @@ public class ReportesPadrinos extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton jBtnCerrarSesion2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;

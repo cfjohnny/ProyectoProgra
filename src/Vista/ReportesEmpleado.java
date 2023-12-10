@@ -105,6 +105,11 @@ public class ReportesEmpleado extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jtEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtEmpleadosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtEmpleados);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 800, -1));
@@ -200,6 +205,10 @@ public class ReportesEmpleado extends javax.swing.JFrame {
     private void jbtModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtModificarActionPerformed
         cargarDatos();
     }//GEN-LAST:event_jbtModificarActionPerformed
+
+    private void jtEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtEmpleadosMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtEmpleadosMouseClicked
 
     /**
      * @param args the command line arguments

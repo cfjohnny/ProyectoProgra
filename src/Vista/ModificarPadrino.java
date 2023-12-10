@@ -104,7 +104,7 @@ public class ModificarPadrino extends javax.swing.JFrame {
         txtDireccion = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setSize(new java.awt.Dimension(1400, 1024));
 
@@ -301,7 +301,7 @@ public class ModificarPadrino extends javax.swing.JFrame {
                         .addComponent(txtCedula)
                         .addComponent(txtNombre)
                         .addComponent(jdFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
-                        .addComponent(jpRadioButtons, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
+                        .addComponent(jpRadioButtons, javax.swing.GroupLayout.PREFERRED_SIZE, 416, Short.MAX_VALUE)
                         .addComponent(txtMontoDonar, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createSequentialGroup()
                             .addGap(15, 15, 15)

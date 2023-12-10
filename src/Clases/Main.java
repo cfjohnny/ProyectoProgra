@@ -22,7 +22,6 @@ public class Main {
     public static InicioSesion iniciar = new InicioSesion();
     public static Animales animales = new Animales();
     public static EliminarPadrino eliminarPadrino = new EliminarPadrino();
-    public static InformeAnimales informeAnimales = new InformeAnimales();
     public static MenuPrincipal menu = new MenuPrincipal();
     public static ModificarPadrino modificarPadrino = new ModificarPadrino();
     public static Padrinos padrino = new Padrinos();

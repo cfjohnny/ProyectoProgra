@@ -90,7 +90,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         lbDireccion = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1280, 853));
         setResizable(false);
@@ -409,7 +409,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
             }
         });
 
-        btnGenerar.setBackground(new java.awt.Color(0, 51, 102));
+        btnGenerar.setBackground(new java.awt.Color(204, 153, 0));
         btnGenerar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnGenerar.setForeground(new java.awt.Color(255, 255, 255));
         btnGenerar.setText("Generar Datos");
@@ -475,7 +475,7 @@ public class RegistroEmpleado extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel2.setForeground(new java.awt.Color(204, 153, 0));
         jLabel2.setText("Registro de Empleados");
 
         lbNumTelefono.setForeground(new java.awt.Color(255, 255, 255));

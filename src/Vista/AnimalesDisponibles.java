@@ -28,20 +28,20 @@ public class AnimalesDisponibles extends javax.swing.JFrame {
 
         jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnBurros = new javax.swing.JButton();
         btnVacas = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        btnVacas1 = new javax.swing.JButton();
-        btnVacas2 = new javax.swing.JButton();
-        btnVacas3 = new javax.swing.JButton();
-        btnVacas4 = new javax.swing.JButton();
+        btnCaballos = new javax.swing.JButton();
+        btnCerdos = new javax.swing.JButton();
+        btnAves = new javax.swing.JButton();
+        btnCabras = new javax.swing.JButton();
+        btnOvejas = new javax.swing.JButton();
+        btnConejos = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setSize(new java.awt.Dimension(1400, 1024));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setBackground(new java.awt.Color(0, 51, 102));
+        jLabel5.setBackground(new java.awt.Color(89, 86, 45));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -51,13 +51,13 @@ public class AnimalesDisponibles extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pexels-vivian-venhasque-19096301.jpg"))); // NOI18N
-        jButton1.setText("VACAS");
-        jButton1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "BURROS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(255, 255, 255))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnBurros.setForeground(new java.awt.Color(255, 255, 255));
+        btnBurros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pexels-vivian-venhasque-19096301.jpg"))); // NOI18N
+        btnBurros.setText("VACAS");
+        btnBurros.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "BURROS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(255, 255, 255))); // NOI18N
+        btnBurros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnBurrosActionPerformed(evt);
             }
         });
 
@@ -71,63 +71,63 @@ public class AnimalesDisponibles extends javax.swing.JFrame {
             }
         });
 
-        jButton10.setForeground(new java.awt.Color(255, 255, 255));
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pexels-vivian-venhasque-19096301.jpg"))); // NOI18N
-        jButton10.setText("VACAS");
-        jButton10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CABALLOS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(255, 255, 255))); // NOI18N
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        btnCaballos.setForeground(new java.awt.Color(255, 255, 255));
+        btnCaballos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pexels-vivian-venhasque-19096301.jpg"))); // NOI18N
+        btnCaballos.setText("VACAS");
+        btnCaballos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CABALLOS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(255, 255, 255))); // NOI18N
+        btnCaballos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                btnCaballosActionPerformed(evt);
             }
         });
 
-        jButton11.setForeground(new java.awt.Color(255, 255, 255));
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pexels-vivian-venhasque-19096301.jpg"))); // NOI18N
-        jButton11.setText("VACAS");
-        jButton11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CERDOS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(255, 255, 255))); // NOI18N
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        btnCerdos.setForeground(new java.awt.Color(255, 255, 255));
+        btnCerdos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pexels-vivian-venhasque-19096301.jpg"))); // NOI18N
+        btnCerdos.setText("VACAS");
+        btnCerdos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CERDOS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(255, 255, 255))); // NOI18N
+        btnCerdos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                btnCerdosActionPerformed(evt);
             }
         });
 
-        btnVacas1.setForeground(new java.awt.Color(255, 255, 255));
-        btnVacas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacas.jpg"))); // NOI18N
-        btnVacas1.setText("VACAS");
-        btnVacas1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "AVES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(255, 255, 255))); // NOI18N
-        btnVacas1.addActionListener(new java.awt.event.ActionListener() {
+        btnAves.setForeground(new java.awt.Color(255, 255, 255));
+        btnAves.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacas.jpg"))); // NOI18N
+        btnAves.setText("VACAS");
+        btnAves.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "AVES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(255, 255, 255))); // NOI18N
+        btnAves.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVacas1ActionPerformed(evt);
+                btnAvesActionPerformed(evt);
             }
         });
 
-        btnVacas2.setForeground(new java.awt.Color(255, 255, 255));
-        btnVacas2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacas.jpg"))); // NOI18N
-        btnVacas2.setText("VACAS");
-        btnVacas2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CABRAS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(255, 255, 255))); // NOI18N
-        btnVacas2.addActionListener(new java.awt.event.ActionListener() {
+        btnCabras.setForeground(new java.awt.Color(255, 255, 255));
+        btnCabras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacas.jpg"))); // NOI18N
+        btnCabras.setText("VACAS");
+        btnCabras.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CABRAS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(255, 255, 255))); // NOI18N
+        btnCabras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVacas2ActionPerformed(evt);
+                btnCabrasActionPerformed(evt);
             }
         });
 
-        btnVacas3.setForeground(new java.awt.Color(255, 255, 255));
-        btnVacas3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacas.jpg"))); // NOI18N
-        btnVacas3.setText("VACAS");
-        btnVacas3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "OVEJAS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(255, 255, 255))); // NOI18N
-        btnVacas3.addActionListener(new java.awt.event.ActionListener() {
+        btnOvejas.setForeground(new java.awt.Color(255, 255, 255));
+        btnOvejas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacas.jpg"))); // NOI18N
+        btnOvejas.setText("VACAS");
+        btnOvejas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "OVEJAS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(255, 255, 255))); // NOI18N
+        btnOvejas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVacas3ActionPerformed(evt);
+                btnOvejasActionPerformed(evt);
             }
         });
 
-        btnVacas4.setForeground(new java.awt.Color(255, 255, 255));
-        btnVacas4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacas.jpg"))); // NOI18N
-        btnVacas4.setText("VACAS");
-        btnVacas4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CONEJOS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(255, 255, 255))); // NOI18N
-        btnVacas4.addActionListener(new java.awt.event.ActionListener() {
+        btnConejos.setForeground(new java.awt.Color(255, 255, 255));
+        btnConejos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vacas.jpg"))); // NOI18N
+        btnConejos.setText("VACAS");
+        btnConejos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CONEJOS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(255, 255, 255))); // NOI18N
+        btnConejos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVacas4ActionPerformed(evt);
+                btnConejosActionPerformed(evt);
             }
         });
 
@@ -139,21 +139,21 @@ public class AnimalesDisponibles extends javax.swing.JFrame {
                 .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnVacas, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVacas1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAves, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCaballos, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBurros, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnCerdos, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnVacas2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCabras, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnVacas3, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnOvejas, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnVacas4, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnConejos, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -161,16 +161,16 @@ public class AnimalesDisponibles extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(91, 91, 91)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBurros, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCaballos, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVacas, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCerdos, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVacas1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVacas2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVacas3, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVacas4, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAves, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCabras, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnOvejas, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConejos, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(81, Short.MAX_VALUE))
         );
 
@@ -179,9 +179,11 @@ public class AnimalesDisponibles extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnBurrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBurrosActionPerformed
+        Burros burros = new Burros();
+       burros.setVisible(true);
+       burros.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnBurrosActionPerformed
 
     private void btnVacasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVacasActionPerformed
        Vacas vacas = new Vacas();
@@ -189,29 +191,41 @@ public class AnimalesDisponibles extends javax.swing.JFrame {
        vacas.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnVacasActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+    private void btnCaballosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaballosActionPerformed
+       Caballos caballos = new Caballos();
+       caballos.setVisible(true);
+       caballos.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnCaballosActionPerformed
 
-    private void btnVacas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVacas1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVacas1ActionPerformed
+    private void btnAvesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvesActionPerformed
+       Aves aves = new Aves();
+       aves.setVisible(true);
+       aves.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnAvesActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
+    private void btnCerdosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerdosActionPerformed
+    Cerdos cerdos = new Cerdos();
+    cerdos.setVisible(true);
+    cerdos.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnCerdosActionPerformed
 
-    private void btnVacas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVacas2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVacas2ActionPerformed
+    private void btnCabrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCabrasActionPerformed
+      Cabras cabras = new Cabras();
+      cabras.setVisible(true);
+      cabras.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnCabrasActionPerformed
 
-    private void btnVacas3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVacas3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVacas3ActionPerformed
+    private void btnOvejasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOvejasActionPerformed
+        Ovejas ovejas = new Ovejas();
+        ovejas.setVisible(true);
+        ovejas.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnOvejasActionPerformed
 
-    private void btnVacas4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVacas4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVacas4ActionPerformed
+    private void btnConejosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConejosActionPerformed
+       Conejos conejos = new Conejos();
+       conejos.setVisible(true);
+       conejos.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnConejosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,14 +263,14 @@ public class AnimalesDisponibles extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAves;
+    private javax.swing.JButton btnBurros;
+    private javax.swing.JButton btnCaballos;
+    private javax.swing.JButton btnCabras;
+    private javax.swing.JButton btnCerdos;
+    private javax.swing.JButton btnConejos;
+    private javax.swing.JButton btnOvejas;
     private javax.swing.JButton btnVacas;
-    private javax.swing.JButton btnVacas1;
-    private javax.swing.JButton btnVacas2;
-    private javax.swing.JButton btnVacas3;
-    private javax.swing.JButton btnVacas4;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

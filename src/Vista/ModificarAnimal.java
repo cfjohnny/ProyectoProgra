@@ -40,7 +40,7 @@ public class ModificarAnimal extends javax.swing.JFrame {
     private void clear() {
         txtID.setText("");
         txtNombre.setText("");
-        txtAlimentacion.setText("");
+        txtPadrino.setText("");
         txtHistoria.setText("");
         txtPeso.setText("");
         txtPeso.setText("");
@@ -49,11 +49,12 @@ public class ModificarAnimal extends javax.swing.JFrame {
         cbEstadoSalud.setSelectedIndex(0);
         cbEspecie.setSelectedIndex(0);
         jdFecha.setDate(fecha.getTime());
+        txtAlimentacion1.setText("");
     }
 
     private void habilitar(boolean si) {
         txtNombre.setEnabled(si);
-        txtAlimentacion.setEnabled(si);
+        txtPadrino.setEnabled(si);
         txtHistoria.setEnabled(si);
         txtPeso.setEnabled(si);
         txtPeso.setEnabled(si);
@@ -62,14 +63,15 @@ public class ModificarAnimal extends javax.swing.JFrame {
         cbEstadoSalud.setEnabled(si);
         cbEspecie.setEnabled(si);
         jdFecha.setEnabled(si);
+        txtAlimentacion1.setEnabled(si);
     }
 
     private boolean vacio() {
         boolean lleno;
         if (txtNombre.getText().isEmpty() || txtID.getText().isEmpty() || txtHistoria.getText().isEmpty()
-                || txtAlimentacion.getText().isEmpty() || txtHistoria.getText().isEmpty() || txtPeso.getText().isEmpty()
+                || txtPadrino.getText().isEmpty() || txtHistoria.getText().isEmpty() || txtPeso.getText().isEmpty()
                 || cbApadrinado.getSelectedIndex() == 0 || cbEspecie.getSelectedIndex() == 0 || cbEstadoSalud.getSelectedIndex() == 0 || cbSexo.getSelectedIndex() == 0
-                || "2023-11-admin11".equals(ff.format(jdFecha.getDate().getTime()))) {
+                || "2023-11-11".equals(ff.format(jdFecha.getDate().getTime()))) {
             lleno = false;
         } else {
             lleno = true;
@@ -102,10 +104,11 @@ public class ModificarAnimal extends javax.swing.JFrame {
         cbSexo = new javax.swing.JComboBox<>();
         txtPeso = new javax.swing.JTextField();
         cbApadrinado = new javax.swing.JComboBox<>();
-        txtAlimentacion = new javax.swing.JTextField();
+        txtPadrino = new javax.swing.JTextField();
         txtHistoria = new javax.swing.JTextField();
+        txtAlimentacion1 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setSize(new java.awt.Dimension(1400, 1024));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -114,14 +117,14 @@ public class ModificarAnimal extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pexels-vivian-venhasque-19096301.jpg"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 510, 700));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 510, 740));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbTitulo.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        lbTitulo.setForeground(new java.awt.Color(0, 51, 102));
+        lbTitulo.setForeground(new java.awt.Color(204, 153, 0));
         lbTitulo.setText("MODIFICAR ANIMAL");
         jPanel3.add(lbTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 8, 384, -1));
 
@@ -151,7 +154,7 @@ public class ModificarAnimal extends javax.swing.JFrame {
         });
         jPanel3.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, -1, -1));
 
-        btnModificar.setBackground(new java.awt.Color(0, 51, 102));
+        btnModificar.setBackground(new java.awt.Color(204, 153, 0));
         btnModificar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnModificar.setForeground(new java.awt.Color(255, 255, 255));
         btnModificar.setText("Modificar");
@@ -160,7 +163,7 @@ public class ModificarAnimal extends javax.swing.JFrame {
                 btnModificarActionPerformed(evt);
             }
         });
-        jPanel3.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 640, 159, 42));
+        jPanel3.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 680, 159, 42));
 
         btnBuscar.setBackground(new java.awt.Color(0, 51, 102));
         btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -238,17 +241,22 @@ public class ModificarAnimal extends javax.swing.JFrame {
         cbApadrinado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "Apadrinado", "No apadrinado" }));
         cbApadrinado.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Estado de apadrinamiento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
         cbApadrinado.setEnabled(false);
-        jPanel3.add(cbApadrinado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 410, 50));
-
-        txtAlimentacion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtAlimentacion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo de alimentación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-        txtAlimentacion.setEnabled(false);
-        txtAlimentacion.addActionListener(new java.awt.event.ActionListener() {
+        cbApadrinado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAlimentacionActionPerformed(evt);
+                cbApadrinadoActionPerformed(evt);
             }
         });
-        jPanel3.add(txtAlimentacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 410, -1));
+        jPanel3.add(cbApadrinado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 410, 50));
+
+        txtPadrino.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtPadrino.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Padrino", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtPadrino.setEnabled(false);
+        txtPadrino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPadrinoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txtPadrino, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 410, -1));
 
         txtHistoria.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtHistoria.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Historia", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
@@ -258,9 +266,19 @@ public class ModificarAnimal extends javax.swing.JFrame {
                 txtHistoriaActionPerformed(evt);
             }
         });
-        jPanel3.add(txtHistoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, 410, 70));
+        jPanel3.add(txtHistoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 630, 410, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 0, 490, 700));
+        txtAlimentacion1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtAlimentacion1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo de alimentación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtAlimentacion1.setEnabled(false);
+        txtAlimentacion1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAlimentacion1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txtAlimentacion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 570, 410, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 0, 490, 740));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -282,20 +300,20 @@ public class ModificarAnimal extends javax.swing.JFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         try {
-//            Padrino padrino = new Padrino();
+            cargarDatos();
             String metodo = "";
             boolean habilitado = false;
             int indice = 0;
-            for (int i = 0; i < Main.animal.size(); i++) {
-                if (txtID.getText().equals(Main.animal.get(i).getIdAnimal())) {
+            for (int i = 0; i < animal.size(); i++) {
+                if (txtID.getText().equals(animal.get(i).getIdAnimal())) {
                     indice = i;
                 }
             }
             if (vacio() == true) {
-                datos.modificar(animal.get(indice).getIdAnimal(), txtNombre.getText(), ff.format(jdFecha.getDate().getTime()),
+                datos.modificar(Integer.parseInt(txtID.getText()), txtNombre.getText(), ff.format(jdFecha.getDate().getTime()),
                         cbEspecie.getSelectedItem().toString(), cbEstadoSalud.getSelectedItem().toString(),
                         Double.parseDouble(txtPeso.getText()), cbSexo.getSelectedItem().toString(), txtHistoria.getText(),
-                        txtAlimentacion.getText(), cbApadrinado.getSelectedItem().toString(), "");
+                        txtAlimentacion1.getText(), cbApadrinado.getSelectedItem().toString(), txtPadrino.getText());
 
                 JOptionPane.showMessageDialog(null, "El animal ha sido modificado satisfactoriamente");
                 habilitar(habilitado);
@@ -313,6 +331,7 @@ public class ModificarAnimal extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         try {
+            cargarDatos();
             boolean habilitado = true;
             boolean existe = false;
             int indice = 0;
@@ -330,7 +349,8 @@ public class ModificarAnimal extends javax.swing.JFrame {
                     txtID.setEnabled(true);
                     txtNombre.setText(animal.get(indice).getNombre());
                     txtPeso.setText(String.valueOf(animal.get(indice).getPeso()));
-                    txtAlimentacion.setText(animal.get(indice).getTipoAlimentacion());
+                    txtAlimentacion1.setText(animal.get(indice).getTipoAlimentacion());
+                    txtPadrino.setText(animal.get(indice).getPadrino());
                     txtHistoria.setText(animal.get(indice).getHistoria());
                     Date date = new Date();
                     date = ff.parse(animal.get(indice).getFechaNacimiento());
@@ -364,13 +384,36 @@ public class ModificarAnimal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPesoActionPerformed
 
-    private void txtAlimentacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlimentacionActionPerformed
+    private void txtPadrinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPadrinoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAlimentacionActionPerformed
+    }//GEN-LAST:event_txtPadrinoActionPerformed
 
     private void txtHistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHistoriaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHistoriaActionPerformed
+
+    private void txtAlimentacion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlimentacion1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAlimentacion1ActionPerformed
+
+    private void cbApadrinadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbApadrinadoActionPerformed
+        boolean existe=false;
+        int indice = 0;
+        for (int i = 0; i < animal.size(); i++) {
+            if (Integer.parseInt(txtID.getText()) == animal.get(i).getIdAnimal()) {
+                existe = true;
+                indice = i;
+            }
+        }
+
+        if (cbApadrinado.getSelectedIndex() == 2) {
+            txtPadrino.setText("N/A");
+            txtPadrino.setEnabled(false);
+        } else {
+            txtPadrino.setText(animal.get(indice).getPadrino());
+            txtPadrino.setEnabled(false);
+        }
+    }//GEN-LAST:event_cbApadrinadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -421,10 +464,11 @@ public class ModificarAnimal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private com.toedter.calendar.JDateChooser jdFecha;
     private javax.swing.JLabel lbTitulo;
-    private javax.swing.JTextField txtAlimentacion;
+    private javax.swing.JTextField txtAlimentacion1;
     private javax.swing.JTextField txtHistoria;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPadrino;
     private javax.swing.JTextField txtPeso;
     // End of variables declaration//GEN-END:variables
 }

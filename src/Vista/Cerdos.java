@@ -19,14 +19,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Ariana
  */
-public class Vacas extends javax.swing.JFrame {
+public class Cerdos extends javax.swing.JFrame {
 
     DatosPadrinos datos = new DatosPadrinos();
     ArrayList<Padrino> padrinos = new ArrayList<>();
     DatosAnimales datosAnimales = new DatosAnimales();
     ArrayList<Animal> animales = new ArrayList<>();
 
-    public Vacas() {
+    public Cerdos() {
         initComponents();
         cargarDatos();
 
@@ -41,7 +41,7 @@ public class Vacas extends javax.swing.JFrame {
         model.setNumRows(0);
 
         if (txtBuscar.getText().contentEquals("")) {
-            animales = datosAnimales.listaAnimalesPorEspecie("Vacas");
+            animales = datosAnimales.listaAnimalesPorEspecie("Cerdos");
         } else {
             animales = datosAnimales.BuscarAnimal(txtBuscar.getText()); //busca los articulos por descripcion
         }
@@ -124,7 +124,7 @@ public class Vacas extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, true, false, false
+                false, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -438,7 +438,7 @@ public class Vacas extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("APADRINAR UNA VACA");
+        jLabel5.setText("APADRINAR UN CERDO");
         jLabel5.setOpaque(true);
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 880, 140));
 
@@ -577,14 +577,26 @@ public class Vacas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Vacas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cerdos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Vacas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cerdos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Vacas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cerdos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Vacas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Cerdos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -593,7 +605,7 @@ public class Vacas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Vacas().setVisible(true);
+                new Cerdos().setVisible(true);
             }
         });
     }

@@ -61,7 +61,7 @@ public class Animales extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setSize(new java.awt.Dimension(1280, 1024));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -193,7 +193,7 @@ public class Animales extends javax.swing.JFrame {
         jtxtCedula.setPreferredSize(new java.awt.Dimension(150, 40));
         getContentPane().add(jtxtCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
 
-        jLabel5.setBackground(new java.awt.Color(0, 51, 102));
+        jLabel5.setBackground(new java.awt.Color(89, 86, 45));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -261,7 +261,9 @@ public class Animales extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
-        // TODO add your handling code here:
+      ReportesAnimales reportes = new ReportesAnimales();
+      reportes.setVisible(true);
+      reportes.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnReportesActionPerformed
 
     private void jBtnEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEliminarUsuarioActionPerformed

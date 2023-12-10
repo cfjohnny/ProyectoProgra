@@ -28,6 +28,7 @@ public class RegistroAnimales extends javax.swing.JFrame {
         jdFecha.setDate(fecha.getTime());
         setDefaultCloseOperation(RegistroAnimales.HIDE_ON_CLOSE);
         cargarDatos();
+
     }
 
     public void cargarDatos() {
@@ -51,9 +52,10 @@ public class RegistroAnimales extends javax.swing.JFrame {
         cbEstadoSalud = new javax.swing.JComboBox<>();
         cbApadrinado = new javax.swing.JComboBox<>();
         cbEspecie = new javax.swing.JComboBox<>();
-        txtAlimentacion = new javax.swing.JTextField();
+        txtPadrino = new javax.swing.JTextField();
+        txtAlimentacion1 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setSize(new java.awt.Dimension(1400, 1024));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -118,7 +120,7 @@ public class RegistroAnimales extends javax.swing.JFrame {
                 btnRegistrarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 610, 169, 50));
+        jPanel2.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 660, 169, 50));
 
         cbSexo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige el sexo", "Macho", "Hembra" }));
@@ -137,7 +139,7 @@ public class RegistroAnimales extends javax.swing.JFrame {
                 txtHistoriaActionPerformed(evt);
             }
         });
-        jPanel2.add(txtHistoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 410, 70));
+        jPanel2.add(txtHistoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 410, 70));
 
         cbEstadoSalud.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cbEstadoSalud.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el estado de salud", "Saludable", "Herido", "Enfermo" }));
@@ -147,21 +149,42 @@ public class RegistroAnimales extends javax.swing.JFrame {
         cbApadrinado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cbApadrinado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción", "Apadrinado", "No apadrinado" }));
         cbApadrinado.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Estado de apadrinamiento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        cbApadrinado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbApadrinadoActionPerformed(evt);
+            }
+        });
         jPanel2.add(cbApadrinado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 410, 50));
 
         cbEspecie.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbEspecie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una especie", "Caballos", "Vacas", "Oveja", "Cabras", "Aves", "Conejos", "Cerdos" }));
+        cbEspecie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una especie", "Caballos", "Vacas", "Ovejas", "Cabras", "Aves", "Conejos", "Cerdos", "Burros" }));
         cbEspecie.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Especie", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-        jPanel2.add(cbEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 410, 50));
-
-        txtAlimentacion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtAlimentacion.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo de alimentación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
-        txtAlimentacion.addActionListener(new java.awt.event.ActionListener() {
+        cbEspecie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAlimentacionActionPerformed(evt);
+                cbEspecieActionPerformed(evt);
             }
         });
-        jPanel2.add(txtAlimentacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 410, -1));
+        jPanel2.add(cbEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 410, 50));
+
+        txtPadrino.setEditable(false);
+        txtPadrino.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtPadrino.setText("N/A");
+        txtPadrino.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Padrino", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtPadrino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPadrinoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtPadrino, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 410, -1));
+
+        txtAlimentacion1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtAlimentacion1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo de alimentación", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        txtAlimentacion1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAlimentacion1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtAlimentacion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 410, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 460, 770));
 
@@ -170,7 +193,7 @@ public class RegistroAnimales extends javax.swing.JFrame {
 private boolean vacio() {
         boolean lleno;
         if (txtNombre.getText().isEmpty() || txtHistoria.getText().isEmpty()
-                || txtAlimentacion.getText().isEmpty() || txtHistoria.getText().isEmpty() || txtPeso.getText().isEmpty()
+                || txtPadrino.getText().isEmpty() || txtHistoria.getText().isEmpty() || txtPeso.getText().isEmpty()
                 || cbApadrinado.getSelectedIndex() == 0 || cbEspecie.getSelectedIndex() == 0 || cbEstadoSalud.getSelectedIndex() == 0 || cbSexo.getSelectedIndex() == 0
                 || "2023-11-11".equals(ff.format(jdFecha.getDate().getTime()))) {
             lleno = false;
@@ -182,7 +205,7 @@ private boolean vacio() {
 
     private void clear() {
         txtNombre.setText("");
-        txtAlimentacion.setText("");
+        txtPadrino.setText("");
         txtHistoria.setText("");
         txtPeso.setText("");
         txtPeso.setText("");
@@ -213,7 +236,7 @@ private boolean vacio() {
                 Animal animal = new Animal(0, txtNombre.getText(), ff.format(jdFecha.getDate().getTime()),
                         cbEspecie.getSelectedItem().toString(), cbEstadoSalud.getSelectedItem().toString(),
                         Double.parseDouble(txtPeso.getText()), cbSexo.getSelectedItem().toString(), txtHistoria.getText(),
-                        txtAlimentacion.getText(), cbApadrinado.getSelectedItem().toString(), "");
+                        txtAlimentacion1.getText(), cbApadrinado.getSelectedItem().toString(), txtPadrino.getText());
 //                for (int i = 0; i < Main.animal.size(); i++) {
 //                    if (txtID.getText().equals(Main.animal.get(i).getIdAnimal())) {
 //                        existe = true;
@@ -253,9 +276,25 @@ private boolean vacio() {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHistoriaActionPerformed
 
-    private void txtAlimentacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlimentacionActionPerformed
+    private void txtPadrinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPadrinoActionPerformed
+
+    }//GEN-LAST:event_txtPadrinoActionPerformed
+
+    private void txtAlimentacion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlimentacion1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAlimentacionActionPerformed
+    }//GEN-LAST:event_txtAlimentacion1ActionPerformed
+
+    private void cbApadrinadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbApadrinadoActionPerformed
+        if (cbApadrinado.getSelectedIndex() == 1) {
+            txtPadrino.setEditable(true);
+        } else {
+            txtPadrino.setEditable(false);
+        }
+    }//GEN-LAST:event_cbApadrinadoActionPerformed
+
+    private void cbEspecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEspecieActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbEspecieActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,9 +342,10 @@ private boolean vacio() {
     private javax.swing.JPanel jPanel2;
     private com.toedter.calendar.JDateChooser jdFecha;
     private javax.swing.JLabel lbTitulo;
-    private javax.swing.JTextField txtAlimentacion;
+    private javax.swing.JTextField txtAlimentacion1;
     private javax.swing.JTextField txtHistoria;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPadrino;
     private javax.swing.JTextField txtPeso;
     // End of variables declaration//GEN-END:variables
 }

@@ -55,7 +55,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1400, 1024));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jBtnEmpleado.setBackground(new java.awt.Color(255, 153, 102));
+        jBtnEmpleado.setBackground(new java.awt.Color(204, 153, 0));
         jBtnEmpleado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jBtnEmpleado.setText("Ingresar");
         jBtnEmpleado.setAlignmentX(0.6F);
@@ -68,7 +68,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(jBtnEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 393, -1, 40));
 
-        jBtnAnimales.setBackground(new java.awt.Color(153, 204, 255));
+        jBtnAnimales.setBackground(new java.awt.Color(204, 153, 0));
         jBtnAnimales.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jBtnAnimales.setText("Ingresar");
         jBtnAnimales.setAlignmentX(0.6F);
@@ -81,7 +81,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(jBtnAnimales, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, -1, 40));
 
-        jBtnPadrinos.setBackground(new java.awt.Color(0, 153, 153));
+        jBtnPadrinos.setBackground(new java.awt.Color(204, 153, 0));
         jBtnPadrinos.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jBtnPadrinos.setText("Ingresar");
         jBtnPadrinos.setAlignmentX(0.6F);
@@ -153,7 +153,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jtxtNumUsuario.setPreferredSize(new java.awt.Dimension(150, 40));
         getContentPane().add(jtxtNumUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, -1, -1));
 
-        jLabel5.setBackground(new java.awt.Color(0, 51, 102));
+        jLabel5.setBackground(new java.awt.Color(89, 86, 45));
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

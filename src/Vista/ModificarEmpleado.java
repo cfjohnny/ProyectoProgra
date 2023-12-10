@@ -99,7 +99,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         txtCedula = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setSize(new java.awt.Dimension(1400, 1024));
 

@@ -45,14 +45,25 @@ public class DatosAnimales {
         try {
             //1. Crear la conexion con la BD
             ConexionBD con = new ConexionBD();
-            PreparedStatement misql = con.crearPreparedStatement("UPDATE animal SET id='" + idAnimal + "',nombre='" + nombre + "',fechaNacimiento='" + fechaNacimiento + "',especie='" + especie + "',estadoSalud='" + estadoSalud
-                    + "',peso='" + String.valueOf(peso) + "',genero='" + genero + "',historia='" + historia + "',tipoAlimentacion='" + tipoAlimentacion + "',apadrinado='" + apadrinado + "' WHERE id=" + idAnimal);
+            PreparedStatement misql = con.crearPreparedStatement("UPDATE animal SET nombre='" + nombre + "',fechaNacimiento='" + fechaNacimiento + "',especie='" + especie + "',estadoSalud='" + estadoSalud
+                    + "',peso='" + String.valueOf(peso) + "',genero='" + genero + "',historia='" + historia + "',tipoAlimentacion='" + tipoAlimentacion + "',apadrinado='" + apadrinado + "',padrino='"+padrino+"' WHERE id=" + idAnimal);
             misql.executeUpdate();
         } catch (SQLException e) {
             Logger.getLogger(DatosAnimales.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-
+    
+    public void modificarApadrinado(int idAnimal, String apadrinado, String cedula) {
+        try {
+            //1. Crear la conexion con la BD
+            ConexionBD con = new ConexionBD();
+            PreparedStatement misql = con.crearPreparedStatement("UPDATE animal SET apadrinado='" + apadrinado + "',padrino='"+cedula+"' WHERE id=" + idAnimal);
+            misql.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(DatosAnimales.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+    
     public void eliminar(String idAnimal) {
         try {
             //1. Crear la conexion con la BD
@@ -127,7 +138,7 @@ public class DatosAnimales {
             //1. Crear la conexion con la BD
             ConexionBD con = new ConexionBD();
             //2. Crear el statement
-             PreparedStatement st = con.crearPreparedStatement("SELECT * FROM animal WHERE especie like ?");
+            PreparedStatement st = con.crearPreparedStatement("SELECT * FROM animal WHERE especie like ?");
             especie = '%' + especie + '%';
             st.setString(1, especie);
             ResultSet rs = st.executeQuery();
